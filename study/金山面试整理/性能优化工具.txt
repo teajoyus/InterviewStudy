@@ -1,0 +1,16 @@
+性能泄漏的工具：看到当前所有对象占用的内存，
+内存使用情况，看内存的曲线
+Hierarchy View来查看布局嵌套
+
+优先使用LinearLayout、FrameLayout，但是LinearLayout需要造成嵌套多层的话就用RelativeLayout
+
+incluce和merge可以配合使用 来减少布局层级
+
+onDraw不可以创建太多对象，可能会被频繁调用 也不能做耗时操作
+
+
+内存泄漏分析MAT工具 可以单独使用 需要有内存分析后的hprof文件
+
+	AS中需要导出这个文件来  eclipse有插件
+
+可以查看到内存所有对象 排行 然后排查 可以看到是哪些对象所持有

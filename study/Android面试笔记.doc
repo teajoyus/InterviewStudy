@@ -1,0 +1,88 @@
+ 1 、 FragmentActivity 是 Support Library 提供的一种特殊 Activity，用于处理 API 11 版本以下的 Fragment。如果我们 APP 中的最低版本大于等于 11，则可以使用普通的 Activity。
+
+
+2、XML布局中，fragment标签只能设置固定的Fragment，而FrameLayout中可以通过FragmentManager更换Fragment
+
+
+
+3、当你移除或替换 Fragment 并向返回堆栈添加事务时，已移除的 Fragment 会停止（而不是销毁）。如果用户向后导航，还原该 Fragment，它会重新启动。如果你没有向返回堆栈添加事务，那么该 Fragment 在移除或替换时就会被销毁。所以如果向要能够向后回退fragment，则应该在FragmentTransaction对象调用replace方法后调用addToBackStack(null)(参数是Transaction的标志)。
+
+
+
+4、fragment之间的通信可以是一个fragment中创建接口(实现onAttch方法把Activity对象转为接口)并调用接口，在宿主Activity中实现这个接口。比如要在A fragemnt传数据到B fragment则在宿主Activity实现回调方法，并先判断是否存在该B fragment后再调用。
+
+
+
+5、SharedPreferences中，如果多个文件可以调用getSharedPreferences（），如果是单个的话可以直接getPreferences（），如果在参数中写Context.MODE_PRIVATE表名只可以被该APP访问，如果是MODE_WORLD_READABLE或者MODE_WORLD_WRITEABLE 模式，那么其他任何app均可通过文件名访问该文件。
+
+
+
+6、所有的apps都可以在不指定某个专门的权限下做读external storage的动作，不过考虑后续可能会更改所以还是配置read权限。对于internal storage，我们不需要声明任何权限，因为程序默认就有读写程序目录下的文件的权限，并且文件默认只可以app内访问
+
+
+
+7、设置 inJustDecodeBounds 属性为true可以在解码的时候避免内存的分配，它会返回一个null的Bitmap，但是可以获取到 outWidth, outHeight 与 outMimeType
+
+
+
+8、onRestoreInstanceState与onCreate一样可以恢复数据，区别是onRestoreInstanceState只要被调用那么Bundle一定是不为空的
+
+9、如果Activity被意外终止，那么才会调用onSaveInstanceSate，正常手动操作或者finish的话则不会
+
+10Handler线程切换：new出个Handler需要有Looper，所以在之前必须调用Looper.prepare()，内部作用是利用ThreadLocal(每个线程有自己的一份拷贝)将此线程与new出一个新的Looper对象作为绑定，在调用完prepare进行绑定后，再调用Looper.loop()方法后该线程才会启动消息循环。在handler发送message的时候，实际上message也会持有handler对象。message会被添加进MessageQueue(每个线程有自己的消息队列，queue来自Looper)中，当轮到该message被处理时，会从message中拿出handler，然后用handler来处理message。实际上，message是来自于子线程，而message持有的handler来自于主线程，在子线程利用handler.sendMessage后把message添加到handler的MessageQueue中，实际上该MessageQueue就是在主线程上的队列（由于启动程序时调用Looper.prepareMainLooper后，主线程创建handler时handler持有主线程的Looper和queue）
+
+
+10、ListView的item高度要用minHeight属性才可以设置
+
+11、ViewRootImpl是在onresume调用之后，调用activity的makeVisible方法在里面创建的，makeVisible里面先让WindowManager执行addView的时候添加布局进来，然后new出ViewRootImpl，再设置布局为可见性mDecor.setVisibility(View.VISIBLE);
+
+
+12、Android里的Intent传递的数据有大小限制，有说要小于1M的也有说小于40K的，但是实际测试这个值并不固定，所以总之大的数据不能用intent传输，可以使用EventBus或者文件、ContentProvider等
+
+13、startService Activity退出后还存在，而bindService则一起退出。如果用startService的话生命周期是：onCreate() -> onStartCommand() -> onDestory，而bindService的生命周期是onCreate() -> onBind() -> onUnBind() -> onDestory。同时使用startService()启动服务与bindService()绑定服务：onCreate() -> onStartCommnad() -> onBind() -> onUnBind() -> onDest、onDestory。
+
+14、如果先bindService,再startService（或者先start再bind），直接stopService是不会调用Service的onDestory方法的，只有等到所有bind的Activity退出的时候才会结束掉这个Service。也就是说，如果调用start的话，需要所有bind都调用unbind或者退出后，调用stopService才会退出。
+
+15、requestLayout()、invalidate()与postInvalidate()有什么区别？
+requestLayout()：该方法会递归调用父窗口的requestLayout()方法，直到触发ViewRootImpl的performTraversals()方法，此时mLayoutRequestede为true，会触发onMesaure()与onLayout()方法，不一定
+会触发onDraw()方法。
+invalidate()：该方法递归调用父View的invalidateChildInParent()方法，直到调用ViewRootImpl的invalidateChildInParent()方法，最终触发ViewRootImpl的performTraversals()方法，此时mLayoutRequestede为false，不会
+触发onMesaure()与onLayout()方法，当时会触发onDraw()方法。
+postInvalidate()：该方法功能和invalidate()一样，只是它可以在非UI线程中调用。
+一般说来需要重新布局就调用requestLayout()方法，需要重新绘制就调用invalidate()方法。
+
+
+16、SharePreference文件存放在/data/data/ < package name > /shared_prefs目录。创建的时候一次性加载到内存，所以如果加载很大的缓存的话，可能会导致阻塞主线程，而且在解析的时候有大量的临时对象会频繁GC引起性能降低，然后全部的key和value还会存在于内存中。所以建议不要存放太大的key和value，另外不要放在同个文件里。SharePreference不支持跨进程，即使MODE_MULTI_PROCESS属性页只是保证在API11之前，如果有sp已经被读取到内存的话，再次获取的时候会重新读取一遍
+
+16:防止过度绘制，如何做布局优化
+　　　使用include复用布局文件。
+　　　使用merge标签避免嵌套布局。
+　　　使用stub标签仅在需要的时候在展示出来。
+　　　
+　　　
+17、Volley加载不了数据特别大的网络请求。因为读取的数据都是全部导入内存，在一个ByteArrayPool的缓存池中。
+
+18、HandlerThread 只是一个Thread，里面有封装好了loop，使用时先调用start后就可以用吧线程的loop传给Handler构造一个Handler对象用于子线程消息通知
+
+19、IntentService也是使用了HandlerThread ，使得实现的onHandleIntent可以做异步耗时操作，因为这个方法的调用异步耗时操作不是在UI上，而是在HandlerThread 绑定的Handdler上的handleMessage调用的。在oncreate的时候创建了HandlerThread并且调用start、创建Handler持有HandlerThread这个线程，在onStart的时候通过发消息给Handler后从而在handleMessage执行了onHandleIntent。所以是子线程异步操作
+
+
+20、BroadCastReceicer发生ANR的时间是10s，而service是20秒
+
+21、网络请求的过程：1、域名解析；2、TCP三次握手；3、建立TCP连接后发起HTTP请求；4、服务器响应HTTP请求；5、浏览器解析HTML代码，同时解析html代码中的资源（如js、css、图片等）；6、浏览器对页面进行渲染并呈现给用户
+
+21、几种启动模式的场景，其中SingeleTop，比如有10条推送消息，点击后启动页面，那就要SingeleTop。不然一次点击会又创建一个页面。singleInstance是适用于和程序分离的页面。比如闹钟，一般不用于中间页面，如果用于中间页面，跳转会有问题，比如：A -> B (singleInstance) -> C，完全退出后，在此启动，首先打开的是B。
+
+22、导致内存泄漏：
+1、单例持有Context的静态引用等大型对象的引用
+2、非静态内部类的对象持有外部类的引用，而生命周期又比外部类长，导致外部类不能回收
+3、Handler 默认创建的匿名内部类Handler会持有外部的引用
+4、线程造成的内存泄漏：例如AsyncTask或者Runnable的匿名内部类持有Activity，由于异步的关系任务未结束而导致activity不能回收
+5、资源未关闭导致的：	使用了BraodcastReceiver，ContentObserver，File，Cursor，Stream，Bitmap等资源
+6、使用ListView没用缓存的contentView
+7、集合造成的内存泄漏，当我们吧引用放入集合内的时候，。在确认不要的时候要把对象从容器中移除掉
+8、WebView没有调用destory
+
+23、Android Service 与 Activity 之间通信的几种方式：Binder、intent、BroadCast、自定义接口回调
+24、进程保活：1、双进程守护(就是开启二个service,二个service是不同的进程中，用aidl监听，有一个service杀死了，另一个service监听到了就重新启动刚杀死的service)；2、service绑定通知栏成为前台服务；3、锁屏时启动一个像素的activity；4、AlarmManager不断启动service；5、通过jni调用，在c层启动多进程
+

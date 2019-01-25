@@ -1,0 +1,20 @@
+standard
+
+singleTop：如果栈顶有这个，那么就不会被创建了，会直接用这个，这个时候onNewIntenet方法会被调用
+
+singleTask：表名在这个task里里面最多只存在一个实例，即使它不在栈顶，
+如果有这个实例 而且不在栈顶，那么会到栈顶来，同时在这个之上的activity会被出栈
+
+singleInstance：一个task只存有一个activity实例，且占有整个task
+会创建个新的task来放这个activity，所以重复的请求不会再次创建 除非这个任务栈被销毁
+
+
+task也有好多个 当前显示的activity是所在的taask就是前台task
+
+假如说要启动的那个activity在其他任务栈存在了，并且还是singleTop的话 那么整个栈都会被拿过来前台
+
+clear top标记一般会和singleTop一起使用
+
+clear top会把这个activity在他之上的activity都出栈，
+比如被启动的activity是stanrand模式，现在是ABCD，想从D跳到B 销毁C，那么用标准模式启动B 会把BCD都出栈后重新创建B
+如果是singleTop的话则不会继续重新创建，会沿用之前的B 然后CD出栈

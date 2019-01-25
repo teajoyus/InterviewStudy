@@ -1,0 +1,11 @@
+二叉树求深度可以如下：
+/求二叉树深度
+int maxDeep(Node *root)
+{
+	if(root == NULL)
+		return 0;
+	int max1 = maxDeep(root->left) + 1;
+	int max2 = maxDeep(root->right) + 1;
+	return (max1 > max2) ? max1 : max2;
+}
+ 

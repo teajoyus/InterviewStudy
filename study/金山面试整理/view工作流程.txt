@@ -1,0 +1,13 @@
+在oncreate onresume都获取不到，因为不是同步的，
+
+可以在onWindowFocusChanged（每次onPause和onResume会触发调用 因为不太好）
+可以用handler post的方法
+
+viewGroup是抽象的 父布局有自己的一些布局特性
+
+setWillNoDrow 父布局不需要绘制可以设置
+
+draw:draw background 、onDraw自己、dispatchDraw
+
+
+自定义view（如果是继承textview这些则不需要）需要自己处理wrap content的效果和 padding

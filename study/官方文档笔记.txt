@@ -1,0 +1,43 @@
+ 1 、 FragmentActivity 是 Support Library 提供的一种特殊 Activity，用于处理 API 11 版本以下的 Fragment。如果我们 APP 中的最低版本大于等于 11，则可以使用普通的 Activity。
+
+2、XML布局中，fragment标签只能设置固定的Fragment，而FrameLayout中可以通过FragmentManager更换Fragment
+
+3、当你移除或替换 Fragment 并向返回堆栈添加事务时，已移除的 Fragment 会停止（而不是销毁）。如果用户向后导航，还原该 Fragment，它会重新启动。如果你没有向返回堆栈添加事务，那么该 Fragment 在移除或替换时就会被销毁。所以如果向要能够向后回退fragment，则应该在FragmentTransaction对象调用replace方法后调用addToBackStack(null)(参数是Transaction的标志)。
+
+
+4、fragment之间的通信可以是一个fragment中创建接口(实现onAttch方法把Activity对象转为接口)并调用接口，在宿主Activity中实现这个接口。比如要在A fragemnt传数据到B fragment则在宿主Activity实现回调方法，并先判断是否存在该B fragment后再调用。
+
+5、SharedPreferences中，如果多个文件可以调用getSharedPreferences（），如果是单个的话可以直接getPreferences（），如果在参数中写Context.MODE_PRIVATE表名只可以被该APP访问，如果是MODE_WORLD_READABLE或者MODE_WORLD_WRITEABLE 模式，那么其他任何app均可通过文件名访问该文件。
+
+6、所有的apps都可以在不指定某个专门的权限下做读external storage的动作，不过考虑后续可能会更改所以还是配置read权限。对于internal storage，我们不需要声明任何权限，因为程序默认就有读写程序目录下的文件的权限，并且文件默认只可以app内访问
+
+7、设置 inJustDecodeBounds 属性为true可以在解码的时候避免内存的分配，它会返回一个null的Bitmap，但是可以获取到 outWidth, outHeight 与 outMimeType
+
+8、onRestoreInstanceState与onCreate一样可以恢复数据，区别是onRestoreInstanceState只要被调用那么Bundle一定是不为空的
+
+9、如果Activity被意外终止，那么才会调用onSaveInstanceSate，正常手动操作或者finish的话则不会
+
+10Handler线程切换：new出个Handler需要有Looper，所以在之前必须调用Looper.prepare()，内部作用是利用ThreadLocal(每个线程有自己的一份拷贝)将此线程与new出一个新的Looper对象作为绑定，在调用完prepare进行绑定后，再调用Looper.loop()方法后该线程才会启动消息循环。在handler发送message的时候，实际上message也会持有handler对象。message会被添加进MessageQueue(每个线程有自己的消息队列，queue来自Looper)中，当轮到该message被处理时，会从message中拿出handler，然后用handler来处理message。实际上，message是来自于子线程，而message持有的handler来自于主线程，在子线程利用handler.sendMessage后把message添加到handler的MessageQueue中，实际上该MessageQueue就是在主线程上的队列（由于启动程序时调用Looper.prepareMainLooper后，主线程创建handler时handler持有主线程的Looper和queue）
+
+
+10、ListView的item高度要用minHeight属性才可以设置
+
+11、ViewRootImpl是在onresume调用之后，调用activity的makeVisible方法在里面创建的，makeVisible里面先让WindowManager执行addView的时候添加布局进来，然后new出ViewRootImpl，再设置布局为可见性mDecor.setVisibility(View.VISIBLE);
+
+
+12、Android里的Intent传递的数据有大小限制，有说要小于1M的也有说小于40K的，但是实际测试这个值并不固定，所以总之大的数据不能用intent传输，可以使用EventBus或者文件、ContentProvider等
+
+13、startService Activity退出后还存在，而bindService则一起退出。如果用startService的话生命周期是：onCreate() -> onStartCommand() -> onDestory，而bindService的生命周期是onCreate() -> onBind() -> onUnBind() -> onDestory。同时使用startService()启动服务与bindService()绑定服务：onCreate() -> onStartCommnad() -> onBind() -> onUnBind() -> onDest、onDestory。
+
+14、如果先bindService,再startService（或者先start再bind），直接stopService是不会调用Service的onDestory方法的，只有等到所有bind的Activity退出的时候才会结束掉这个Service。也就是说，如果调用start的话，需要所有bind都调用unbind或者退出后，调用stopService才会退出。
+
+15、requestLayout()、invalidate()与postInvalidate()有什么区别？
+requestLayout()：该方法会递归调用父窗口的requestLayout()方法，直到触发ViewRootImpl的performTraversals()方法，此时mLayoutRequestede为true，会触发onMesaure()与onLayout()方法，不一定
+会触发onDraw()方法。
+invalidate()：该方法递归调用父View的invalidateChildInParent()方法，直到调用ViewRootImpl的invalidateChildInParent()方法，最终触发ViewRootImpl的performTraversals()方法，此时mLayoutRequestede为false，不会
+触发onMesaure()与onLayout()方法，当时会触发onDraw()方法。
+postInvalidate()：该方法功能和invalidate()一样，只是它可以在非UI线程中调用。
+一般说来需要重新布局就调用requestLayout()方法，需要重新绘制就调用invalidate()方法。
+
+
+

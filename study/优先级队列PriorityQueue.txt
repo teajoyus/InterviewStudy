@@ -1,0 +1,15 @@
+博客：http://www.importnew.com/6932.html
+
+Queue<Integer> integerPriorityQueue = new PriorityQueue<>(7);
+
+
+//优先队列使用示例
+        Queue<Customer> customerPriorityQueue = new PriorityQueue<>(7, idComparator);
+
+
+优先级队列是跟最大堆、最小堆的概念结合的，需要滤清楚
+
+源码分析：https://blog.csdn.net/hxpjava1/article/details/21478323
+
+
+最小堆，也就是一个二叉树，增加一个元素时，判断这个元素如果比结点大，那么就往它的左子树，否则去右子树。然后继续判断，直到没有结点可以判断后插入，之后进过上滤，交换结点元素，调整元素的实际排序

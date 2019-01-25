@@ -1,0 +1,42 @@
+public class DeadLock {
+
+	public static void main(String[] args) {
+		Object obj1 = new Object();
+		Object obj2=  new Object();
+		new Thread(new MyRunnable(obj1, obj2)).start();
+		new Thread(new MyRunnable(obj1, obj2)).start();
+	}
+
+	public static class MyRunnable implements Runnable {
+		Object obj1,obj2;
+		public MyRunnable(Object obj1,Object obj2) {
+			this.obj1 = obj1;
+			this.obj2 = obj2;
+		}
+		@Override
+		public void run() {
+			synchronized (obj1) {
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				synchronized (obj2) {
+					System.out.println("没有锁到");
+				}
+			}
+		}
+	}
+}
+
+
+
+产生死锁：线程A本身持有的锁对象a没释放，又去请求锁对象b，而另外的线程B已经持有锁对象b但是没释放，然后又去请求锁对象a
+所以两者相互等待对方的锁 又相互没释放自身的锁
+
+
+写例子的时候，就写一个线程雷，让他执行的时候需要先进入第一个锁，然后没释放的时候又想进去第二个锁里面打印出数据，这两个锁之间可以延迟一点时间才看的出来。
+
+然后创建两个进程，传入锁1和锁2，另外一个传入锁2和锁1，这样第一个线程就持有锁1并请求锁2，第二个线程持有锁2并请求锁1
+（注意两个锁之间加一点延迟，不然可能第一个线程在请求第二个锁的时候，第二个线程还没来得及持有锁呢，就没被死锁了）

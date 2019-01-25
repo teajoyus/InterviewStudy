@@ -1,0 +1,32 @@
+一面：
+1、Handler机制（包括ThreadLocal的实现）；
+2、事件分发机制；
+3、Binder+AIDL过程；
+4、Activity启动过程；
+5、内存泄漏；
+6、Jni过程、以及对C、C++了解程度；
+7、自定义view
+8、重建时恢复数据（onSaveInstance方法）
+9、如何让线程顺序运行，不依赖框架类。
+10、软引用、弱引用
+
+
+
+二面：
+1、View和SurfaceView的区别
+2、SurfaceView中出现黑屏怎么排查问题
+3、开启和关闭硬件加速有什么影响
+4、事件分发机制（touch、key）
+5、Handler机制
+6、分析“图片浏览器”需求、功能的技术可行性和方案
+7、设计模式（举例工厂模式的运用）
+8、View的工作流程
+9、RecyclerView相比ListView有什么优点（除了支持线性和网格布局）
+10、布局优化
+11、图片压缩优化（加载20M大图）
+12、Activity启动过程
+13、JNI过程（java的netive方法是如何调用到C/C++代码的）
+14、如何编写一个gradle配置文件
+15、图片加载框架中的Bitmap pool
+
+建议： 先把基础的view这些机制都给了解清楚后再考虑代码性能优化 设计模式等

@@ -1,0 +1,14 @@
+include 包含进来 不用重复加载
+
+ViewStub 懒加载布局
+
+在xml中声明节点ViewStub 有个andorid：layout可以把你要懒加载的布局加起来
+inflateId是生命加载的布局view的根id 会替换
+
+在代码中 把ViewStub 对象调用infalte方法后 还要再通过这个inflateId来fingviewById，之后才能用到懒加载布局的子view
+  
+merge就是合并，只能放在根节点 不是view 只是声明一个视图等待被添加
+
+因为merge不是view 所以在通过LayoutInflate.inflate方法渲染的时候， 第二个参数必须指定一个父容器，且第三个参数必须为true，也就是必须为merge下的视图指定一个父节点。
+
+有些单独的xml可能外面多套个viewgroup没必要 那么就可以用merge来减少这个layout

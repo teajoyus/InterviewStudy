@@ -1,0 +1,5 @@
+按下home键后，调用OnPause()和OnStop()方法中间走的OnSaveInstanceState();
+当在开发者选项中，勾选上“不保留活动（用户离开后即销毁每个活动）”后，就多了个OnDestroy()。
+
+Activity的 onSaveInstanceState() 和 onRestoreInstanceState()并不是生命周期方法。常onSaveInstanceState()只适合用于保存一些临时性的状态，而onPause()适合用于数据的持久化保存。
+

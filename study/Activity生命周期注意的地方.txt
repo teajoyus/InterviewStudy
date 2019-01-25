@@ -1,0 +1,36 @@
+参考：http://hukai.me/android-training-course-in-chinese/basics/activity-lifecycle/stopping.html
+
+在跳转的时候，会先调用onPause，等到跳转的activity得到焦点后，原先的才会掉用onStop。
+如果跳转的activity是半透明的 也就是没有完全遮挡住前一个activity，那么前一个activity不会调用onStop
+
+onPause 适合释放资源、比如广播、相机等等。但不适合持久化数据
+
+持久化数据应该在onStop里面，才不会因为在onPause调用而导致跳转变慢
+
+onDestory并不是一定会马上被调用，可能会导致onDestory还来不及调用就又创建新的实例了。
+所以onDestory不能用来保存或释放一些东西，保存和释放可以放在onPause 、onStop里面再结合isFinish()来判断是否是要销毁Activity的
+
+
+onDestory在被外部强制关闭进程、发生异常奔溃或者是自己System.exit(0)时就不会被调用。其他用户主动退出、系统原因主动kill掉Activity都会调用onDestory
+
+说到System.exit(0)，如果直接调用System.exit(0)、killProgress，如果栈上面存在没有finish过的Activity的话，那么退出会重新创建启动进程，
+如果当前没有其他没有finish的activity的话就能退出，所以调用这个要退保没有其他未finish的activity才行。
+
+onPause 对应 onResume
+onStop 对应 onRestart。当activity从Stopped状态回到前台时，它会调用onRestart().系统再调用onStart()方法，onStart()方法会在每次activity可见时都会被调用。
+onRestart()方法则是只在activity从stopped状态恢复时才会被调用，因此我们可以使用它来执行一些特殊的恢复(restoration)工作。
+但是建议onStop方法去对应onStart。也就是我们在onStop里面做了哪些清除的操作，就该在onStart里面重新把那些清除掉的资源重新创建出来。
+
+
+
+onSaveInstanceState方法，注意不是看固定什么操作就会调用，而是只要系统可能主动会杀死它的时候就会调用，如果自己按下back键或者finish是用户主动行为，就不会被调用
+开发的时候，注意把一些额外的数据保存起来。它发生在onStop之后。
+如果系统需要主动去kill掉这个activity的话，那么在站结构中还是有存在这个实例的，只是等下返回来的时候会重新创建一次，再重新创建的时候就会调用onRestoreInstanceState（）方法了
+还有onCreate方法里面的Bundle不为空，需要恢复的数据可以在这两个方法中来恢复。注意onCreate中的Bundle不为空的时候代表重建，那么setContentView等布局初始化工作还是要的。
+相比起创建只是多出Bundle里面在上一次保存的数据。
+
+onRestoreInstanceState方法是在onStart方法后才执行的。
+
+onCreate里面尽量少做事情，避免程序启动太久都看不到界面
+
+onCreate执行完之后会迅速到onStart被用户可见后再到onResume获取焦点。然后一直保持在Resumed状态直到Pause

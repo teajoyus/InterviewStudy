@@ -1,0 +1,14 @@
+博客：https://blog.csdn.net/venus321/article/details/80778242
+
+
+这个没啥，就是记录一下
+
+Compareable<T>是给entry类来实现的，需要实现的是compareTo方法
+
+之后就可以用Collections.sort and Arrays.sort来排序
+
+那么对于一些没有实现Compareable<T>接口的entry来说，
+可以利用Comparator 来实现排序规则：
+Collections.sort中传入list和new出一个Comparator匿名内部类，实现compare方法来定义一套比较规则
+
+map可以转换为list后来排序给list，本身map是无序的，排序没意义，只能用list来

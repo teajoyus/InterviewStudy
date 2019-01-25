@@ -1,0 +1,16 @@
+参考自：https://blog.csdn.net/jia635/article/details/52387658
+
+
+主要跟windows中的token有关系
+
+Dialog在创建的时候不具有token，而Activity有
+
+而Dialog在创建的时候用这个context获取(WindowManager)，而如果用Application或者Service的Context去获取这个WindowManager服务的话，会得到一个WindowManagerImpl的实例，这个实例里token也是空的。之后在Dialog的show方法中将Dialog的View(PhoneWindow.getDecorView())添加到WindowManager时会给token设置默认值还是null。
+
+如果这个Context是Activity，则直接返回Activity的mWindowManager，这个mWindowManager在Activity的attach方法被创建，Token指向此Activity的Token，mParentWindow为Activity的Window本身
+
+
+ mWindowManager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
+
+
+

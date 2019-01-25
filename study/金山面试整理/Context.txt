@@ -1,0 +1,5 @@
+Application、Service都是Context的直接子类
+而Actvitiy不是直接继承Context的，而是继承Context的子类ContextThemeWrapper
+因为Actvitiy是看得到的界面 有个主题。
+
+有些工具类比如需要打开资源的 需要传入context的话 可以使用context.getApplicaionContext（）

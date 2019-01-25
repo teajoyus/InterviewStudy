@@ -1,0 +1,6 @@
+String的intern方法：返回常量池中等值的String。
+会向常量池中查找是否存在这个等值的常量，不存在的话则添加到常量池。
+比如String a = "abc";
+String b = new String("abc");
+System.out.println(a==b);//返回false，因为b的实例是在堆中，地址不相同
+System.out.println(a==b.intern());//返回true，因为intern返回了常量池的数据，所以两个地址是一样的

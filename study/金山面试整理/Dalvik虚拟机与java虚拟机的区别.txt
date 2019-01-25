@@ -1,0 +1,4 @@
+java虚拟机运行的是Java字节码
+Dalvik虚拟机运行的是Dalvik字节码
+Dalvik把java字节码转换后打包成一个dex，比如apk下面的那个classes.dex
+Dalvik是基于寄存器结构来传递数据，而jvm是用栈

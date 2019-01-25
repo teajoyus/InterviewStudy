@@ -1,0 +1,5 @@
+webView有个addJavascriptInterface方法来接收一个对象和一个对象名称
+在html页面中可以根据这个对象名称去调出这个对象的方法出来完成交互
+java可以通过webview的evaluateJavascript方法（API19以上）来调用js
+4.4以下还是用loadUrl： webView.loadUrl(“javascript:methodName(parameterValues)”)
+按照一定的格式把js的方法写成字符串传进来

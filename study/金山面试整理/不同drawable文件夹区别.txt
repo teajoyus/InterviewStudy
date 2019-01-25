@@ -1,0 +1,12 @@
+density：120dip（low），160dip（medium）,240dip（high），320dip（xhigh），480dip（drawable-xxhdpi）。
+
+比如指定一个view的宽度是100dp，那么在160dip下面就是100px  在320下面就是200px
+
+drawable-mdpi的文件夹内有一张22*44的图片，假设屏幕密度为320dip，那它在内存中的大小将是44*88
+
+意思就是说，你把一张图片放在像素密度越低的文件夹里 当屏幕密度越高的时候 显示出来的图片像素越多 内存越多
+
+
+用BitmapFactory.Options的inJuestDecodeBounds设置为true来加载图片 可以不把图片加到内存而就能够读取宽高，获取到的bitmap对象实际上有图片属性  但是不存有图片内存。
+
+根据实际的view尺寸和图片大小来计算inSampleSize，默认是1，如果是2的话，则就是把图片缩小一倍。 建议是用2的倍数来

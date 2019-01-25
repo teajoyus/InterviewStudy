@@ -1,0 +1,14 @@
+MVC与MVP的区别在于view和model之间不能直接交互
+我们点击要根据model的数据来隐藏图片，如果是MVC的话，那么就直接判断model的数据来决定是否影藏
+而MVP则是吧需不需要隐藏的逻辑放在了presenter，
+对view来说，它只能去通知Presenter去处理逻辑，并且接收Presenter对它通知更新。而不能直接操作model
+对model来说也只能是被Presenter调用来处理业务逻辑，而不能去通知view更新。
+
+对于MVC来说，用户可以对View发出指令，让view直接通过model来更新状态
+用户也可以像Controller发送指令，再由Controller通知view更新
+
+MVP 最大的特别就是view和model不能直接联系，需要通过presenter来间接联系
+在这种情况下，view总是处于一种被动状态，不自己处理更新逻辑，只接收presenter发来的更新。
+
+MVVM则是把presenter换成viewmodel，对view是双向绑定的状态，即view的更新同时也会通知viewmodel
+一个ViewModel可以绑定到不同的"View"上，当View变化的时候Model可以不变，当Model变化的时候View也可以不变。

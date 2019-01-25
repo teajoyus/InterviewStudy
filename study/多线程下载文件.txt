@@ -1,0 +1,16 @@
+博客：https://www.cnblogs.com/zhujiabin/p/7052732.html
+
+https://www.jianshu.com/p/c845087ef8d5
+
+原理是利用RandomAccessFile，一个可读可写的类，还可以随机访问，比如seek到某个位置
+
+多线程下载就是每个线程去下载某一段字节内容
+利用conn.setRequestProperty("Range", "bytes=" + startPos + "-"
+                        + endPos);// 设置获取实体数据的范围
+
+然后在利用RandomAccessFile的seek方法seek到对应文件位置写进来。
+
+这样就可以实现多线程下载了。
+
+需要捋清楚这个过程，线程怎么分配，各个线程下载内容范围大小、并发
+

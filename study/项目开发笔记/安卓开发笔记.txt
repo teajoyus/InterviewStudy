@@ -1,0 +1,56 @@
+﻿ListView 设置固定item事件的时候，先设置position为tag，然后再在事件响应里面再次判断是否是这个position'
+
+
+fragment可以在basefragment做一个懒加载的操作，再让idleHandler来处理，可以保证是onResume之后。
+
+
+屏幕自动跑去上面的焦点，可以弄个看不到的控件在最上面 然后让下面的控件延迟获取焦点
+
+
+关闭Eclipse，删掉Eclipse WorkSpace下.metadata\.plugins\org.eclipse.core.resources\.projects文件夹下的所有内容，再重启Eclipse。
+
+
+eclipse修改包名：1、修改gen目录的重命名 然后修改注册清单，2、是右键android tools选择重命名包名
+
+
+WeightGridLayout，注意吧item的layout改为focusable，但是子view就不要了，如果需要就使用android:duplicateParentState="true"属性就行。
+通过：
+layout.setSelector(getResources().getDrawable(R.drawable.focus_01));
+		layout.getViewGroupSelector().setDrawSelectorOnTop(false);
+
+可以实现焦点框，焦点框不会受到item高度的局限而看上去很小。
+
+而getYSize是行数、getXSize是列数。getChildYSize和getChildXSize不知道为啥设置为1的话就可以
+
+
+如果要焦点框放大效果，那么可以用getViewGroupSelector去设置焦点图，然后焦点图要设置.9图。如果不能放大的效果的话，那么吧WeiGridLayout去设置个padding 以及设置   android:clipChildren="false" android:clipToPadding="false" 代表允许子控件超出padding
+
+
+VerticalViewPager2中的scrollToItem方法可以控制滚动一滚动距离
+
+比如	destY = (int) (destY - height + height * curInfo.heightFactor+scrollExtral);
+加多个scrollExtral变量来额外滚动距离
+
+
+如果selector的焦点图是圆形的话，那么就搞一张方形的来，然后画.9的时候不要让这个圆形去改变样子（例子参考重庆项目https://svn.eis/svn/apptv/2015/main/packages/theme_chongqing_dvbott/ChongQing_ipanelforhw中的search_result_actor_focus.9.png）
+
+
+
+注意如果是预置安装的话，也就是复制在system/app下，那么so文件也需要预置到system/lib下（貌似是5.1开始的，4.4不会）,不然采用pm install的话就会解压到data/app-libs目录下。看log的时候要注意加载so文件的那个打印，看解析的apk以及加载so库时用的路径。
+
+
+getMeasuredHeight得到的是0，如果不是因为再oncreate的缘故的话，那可能是因为本身是GONE的，然后恢复了后马上就获取，可能会获取不到，做法是再post方法里面获取getMeasuredHeight，或者是保证前身不是GONE的
+
+
+用viewGroupSelector的时候，如果放大效果的时候不能到顶层来，被其他view遮住了。可以设置getViewGroupSelector().setBringFocusToFront(true);如果设置了发现只有焦点框有作用的话，再通过getViewTreeObserver().addOnGlobalFocusChangeListener里面对newFocus判空操作后newFocus.bringToFront();就可以了
+
+
+用getChildAt的时候，无论父布局不是滚动布局，只要是被bringToFront的话 顺序就会乱了
+
+
+setCurrentItem的时候，如果是跨页那么instantiateItem会一个个连续加载，但是setCurrentItem本身不会被调用多次。如果当前是1，那么setCurrentItem为10的话，那么instantiateItem就会从1加载到10，而setCurrentItem这个方法不会多次被调用
+
+
+当需要创建分支（一个项目或者一整个目录都一样的做法）的时候，不要断开SVN再提交，那样会导致所有的代码文件提交人都是你的，解决方式是使用TortoiseSVN先把需要做分支的目录文件夹checkout下来，然后右键TortoiseSVN选择Branch/tag，然后就可以在To path中填写要分支到的新目录了，下面注意选择HEAD revision in the repsoitory确保分支是最新版本，如果你不是要用以前的版本的话。
+
+如果是viewpager直接是一行一页的话，遇到上下的焦点被覆盖，而viewpager用padding都没有用的话，可以考虑WeightGridLayout加个clip和padding

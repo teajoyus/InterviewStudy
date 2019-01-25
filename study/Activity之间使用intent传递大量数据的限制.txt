@@ -1,0 +1,15 @@
+参考自：https://blog.csdn.net/rflyee/article/details/47441405
+
+官方文档是说传递过程中保存在一个叫做“ Binder transaction buffe”的地方，这个缓冲区大小不超过1MB，而且还是共享的，所以Intent每次允许传递的最大数据量并不是特定大小的。
+
+所以传递时要防止传递大量数据
+解决方法：
+一. 限制传递数据量
+二. 改变数据传输方式（参见Activity之间传递数据的方式）
+1. 静态static
+2. 单例
+3. Application
+4. 持久化
+
+
+

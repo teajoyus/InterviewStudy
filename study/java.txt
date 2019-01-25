@@ -1,0 +1,36 @@
+1、反射内部类的写法是 包名.外部类$内部类
+
+Integer i = 10： 从常量池里面取出来，因为是-128>=i<=127的区间
+Integer i2 = new Integer （10）。是创建出来的对象，并赋值为10，不是从常量池。
+此时，i==i2为false
+
+如果是int i = 10，那么i==i2为true
+
+Integer i3 = 127;
+Integer i4 = 127;
+
+此时，i3==i4为true,但是如果是128 也就是不在常量池的区间了，那么就是为false，他们会创建出自己的对象，当然用equals那就为true
+
+
+2、接口默认的是public static final的,所以只能定义常量不能定义变量
+
+接口可以定义类，是public static 和普通内部类没区别
+
+3、匿名内部类打印出来是类名$(1,2,3)
+内部类才会带有类名后缀
+
+4、GC时用引用计数法带来的问题一个是开销，垃圾回收器需要在所有对象遍历后，如果引用记数是0的话则释放空间。另外一个是缺陷：当发生循环引用时，就会造成对象应该被回收，但是引用计数却不为0的情况。所以该方法未被java虚拟机所采纳
+
+5、初始化顺序：父类静态成员、父类静态代码快、子类静态变量、子类静态代码快、父类变量、父类代码快、父类构造器、子类变量、子类代码快、子类构造器
+
+6、java四种引用类型：默认是强引用。
+
+弱引用：WeakReference<Object> weakRerference = new WeakReference<Object>(referent); 
+当所引用的对象在JVM中没有强引用时，java在GC之后，弱引用指向的对象会被回收，此时再 weakRerference.get()则变为null 
+
+软引用：SoftReference<Object> softRerference = new SoftReference<Object>(referent);   
+SoftReference 于 WeakReference 的特性基本一致， 最大的区别在于 SoftReference 会尽可能长的保留引用直到 JVM 内存不足时才会被回收(虚拟机保证), 这一特性使得 SoftReference 非常适合缓存应用。即使没有强引用也只有在内存不足被GC后softRerference .get()则变为null 
+
+7、a=a+b与a+=b的区别是，a=a+b会变为持有结果的类型，而a+=b不会，比如定义两个byte变量和b，然后a=a+b那么编译器报错，因为a+b是int型，跟a+b后的值多少无关，而a+=b则可以。同样short s=0；s=s+1；这样也会报错，因为s+1是int
+
+8、使用Thread.sleep(0)手动触发一次操作系统分配时间片的操作，这也是平衡CPU控制权的一种操作。
