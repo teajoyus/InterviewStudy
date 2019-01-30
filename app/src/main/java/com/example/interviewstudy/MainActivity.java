@@ -11,6 +11,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         title = new ArrayList<>();
         put("slide view", com.example.interviewstudy.view.SlideViewActivity.class);
         put("linearLayout measure", com.example.interviewstudy.view.LinearMeasureActivity.class);
+        put("Rxjava study", com.example.interviewstudy.view.RxJavaActivity.class);
     }
     private void put(String key,Class clazz){
         title.add(key);
