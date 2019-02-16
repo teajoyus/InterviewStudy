@@ -41,8 +41,10 @@ public class MainActivity extends AppCompatActivity {
         activitys = new HashMap<>();
         title = new ArrayList<>();
         put("slide view", com.example.interviewstudy.view.SlideViewActivity.class);
-        put("linearLayout measure", com.example.interviewstudy.view.LinearMeasureActivity.class);
+        put("linearLayout measure", com.example.interviewstudy.view.LinearMeasureActivity .class);
         put("Rxjava study", com.example.interviewstudy.view.RxJavaActivity.class);
+        put("SurfaceView study", com.example.interviewstudy.view.SurfaceViewActivity.class);
+        put("launcher mode", com.example.interviewstudy.launchermode.LauncherModeActivity.class);
     }
     private void put(String key,Class clazz){
         title.add(key);

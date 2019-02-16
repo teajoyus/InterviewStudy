@@ -19,6 +19,12 @@
         <activity android:name=".view.SlideViewActivity"></activity>
         <activity android:name=".view.LinearMeasureActivity"></activity>
         <activity android:name=".view.RxJavaActivity"></activity>
+        <activity android:name=".view.SurfaceViewActivity"></activity>
+
+        <activity android:name=".launchermode.LauncherModeActivity"></activity>
+        <activity android:name=".launchermode.LauncherModeActivityB" android:launchMode="singleTop"></activity>
+        <activity android:name=".launchermode.LauncherModeActivityC" android:launchMode="singleTask"></activity>
+        <activity android:name=".launchermode.LauncherModeActivityD" android:launchMode="singleInstance"></activity>
     </application>
 
 </manifest>

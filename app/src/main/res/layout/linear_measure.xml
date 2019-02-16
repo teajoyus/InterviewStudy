@@ -18,5 +18,8 @@
     android:id="@+id/mv_2"
     android:layout_width="match_parent"
     android:layout_height="100dp"/>
+    <view class="com.example.interviewstudy.view.SurfaceViewActivity$SecondSurfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
