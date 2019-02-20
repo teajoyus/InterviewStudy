@@ -23,6 +23,7 @@ join()还能传个long型参数，表示等待多少ms
 
 那么calling thread调用join并没有持有t对象的锁，那么即使在join传入个毫秒参数，也是要等到synchronized同步快执行完才能往下执行
 
+(需要再仔细理解)
 
 
 在理解了Object的wait和notify方法之后，看懂了join的源码：
@@ -65,6 +66,7 @@ join()还能传个long型参数，表示等待多少ms
 本身调用wait(0);之后，calling thread会释放该线程锁，进入等待状态
 这个时候假如被其他线程notify的话 那么它就又活过来了，活过来的话判断isAlive()是true，则调用wait继续等待
 如果直接while (isAlive())的话会特别耗资源，是一种轮询的方式
+也就是说：用wait会去释放锁 进行等待，不会一直轮询下去
 
 
 我的思考：
@@ -75,14 +77,6 @@ join()还能传个long型参数，表示等待多少ms
 
 
 那么如果两个线程同时在等这个线程锁呢 都会唤醒，百度看本地方法的C语言的notify_all，博客：https://blog.csdn.net/qq_26975307/article/details/81666471
-
-
-
-
-
-
-
-
 
 
 

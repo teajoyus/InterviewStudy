@@ -61,3 +61,12 @@ FLAG_ACTIVITY_CLEAR_TOP
 比如ABCD，再启动V，那么会消除BCD,然后重新创建B，此时就是AB
 如果配合FLAG_ACTIVITY_SINGLE_TOP的话则B就不会销毁 而是复用
 配合FLAG_ACTIVITY_NEW_TASK则是singleTask效果
+
+
+四中启动模式的应用场景
+-----------
+ singleTop 适合一些打开重复页面的，比如通知栏点击进去，不可能点击进去然后不断返回
+
+ singleTask：我们一般的Home 主页就是用singleTask 用户在回到主页的时候 连同栈内其他Activity会被清除出栈
+
+ singleInstance：就是整个APP里面只有这个实例，并且跟其他Activity无关联。注意因为不同栈 返回的问题，

@@ -97,3 +97,40 @@ TextureView则可以通过TextureView.setSurfaceTextureListener在子线程中�
 
 
 
+
+
+
+surfaceView截屏问题
+---------------
+截屏会拿屏幕上当前的view，通过view.getDrawingCache();可以拿到。但是有SurfaceView的地方则不能截屏，会发生黑屏。
+由于是SurfaceView拿不到画布，需要自己手动画一次到画布上然后转bitmap，然后再拼接：
+```
+class MyThread implements Runnable {
+        @Override
+        public void run() {
+            Canvas canvas = surfaceHolder.lockCanvas(null);//获取画布
+            doDraw(canvas);
+            surfaceHolder.unlockCanvasAndPost(canvas);//解锁画布，提交画好的图像
+
+        }
+    }
+
+    //将绘制图案的方法抽象出来，让子类实现，调用getBitmap方法时就会调用此方法
+    protected abstract void doDraw(Canvas canvas);
+
+    //调用该方法将doDraw绘制的图案绘制在自己的canvas上
+    public Bitmap getBitmap() {
+        Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        doDraw(canvas);
+        return bitmap;
+    }
+```
+
+然后使用Canvas来拼接图片
+
+
+SurFaceView闪屏问题
+---------------
+注意跳转的时候先销毁SurFaceView避免有黑块
+
