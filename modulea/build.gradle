@@ -1,19 +1,43 @@
-apply plugin: 'com.android.application'
+if(rootProject.ext.isApplication){
+    apply plugin: 'com.android.application'
+}else{
+    apply plugin: 'com.android.library'
+}
+
+
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
-        applicationId rootProject.ext.android.applicationId
+        if(rootProject.ext.isApplication){
+            applicationId 'com.example.modulea'
+        }
+
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //强制让资源名称以组件名开头
+        resourcePrefix 'modulea_'
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets{
+        main{
+            if(rootProject.ext.isApplication){
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            }else{
+                manifest.srcFile 'src/main/release/AndroidManifest.xml'
+                //发布版的时候移除无用的资源
+                java{
+                    exclude "debug/**"
+                }
+            }
         }
     }
 }
@@ -28,8 +52,4 @@ dependencies {
     implementation rootProject.ext.dependencies.recyclerview
     implementation 'io.reactivex.rxjava2:rxjava:'+rootProject.ext.dependencies.rxjava
     implementation 'io.reactivex.rxjava2:rxandroid:'+rootProject.ext.dependencies.rxandroid
-    if(!rootProject.ext.isApplication){
-        //引用modulea 组件
-        implementation project(":modulea")
-    }
 }
