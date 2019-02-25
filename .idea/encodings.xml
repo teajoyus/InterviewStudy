@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/study/Activity生命周期注意的地方.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/Android设计模式对应源码.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/java.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study/java内存模型和垃圾回收/JVM内存划分.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/java线程相关/Java多线程学习之wait、notifynotifyAll 详解.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/java线程相关/Thread.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/java线程相关/java生成死锁的例子.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/java线程相关/wait、notify、notifyAll.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/java线程相关/线程池.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/java线程相关/自身思考线程顺序执行.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/金山面试整理/Activity启动过程.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/金山面试整理/Android中三种锁的用法.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/金山面试整理/Context.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/金山面试整理/Dalvik虚拟机与java虚拟机的区别.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/金山面试整理/HashMap.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/金山面试整理/Java的堆内存与栈内存的存储机制.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/金山面试整理/Listview复用导致错乱的问题.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/金山面试整理/LruCache.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/金山面试整理/ViewStub、include、merge使用.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/金山面试整理/java四种引用.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/金山面试整理/java回收机制.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/金山面试整理/jni.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/金山面试整理/view工作流程.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/金山面试整理/性能优化工具.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/金山面试整理/排序.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/金山面试整理/面试整理.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/面试回忆/金山面试记录.txt" charset="GBK" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
