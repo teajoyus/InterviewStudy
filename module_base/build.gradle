@@ -1,6 +1,6 @@
-if(rootProject.ext.isApplication){
+if (rootProject.ext.isApplication) {
     apply plugin: 'com.android.application'
-}else{
+} else {
     apply plugin: 'com.android.library'
 }
 
@@ -9,8 +9,8 @@ if(rootProject.ext.isApplication){
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
-        if(rootProject.ext.isApplication){
-            applicationId 'com.example.modulea'
+        if (rootProject.ext.isApplication) {
+            applicationId 'com.example.base'
         }
 
         minSdkVersion rootProject.ext.android.minSdkVersion
@@ -19,7 +19,7 @@ android {
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         //强制让资源名称以组件名开头
-        resourcePrefix 'modulea_'
+        resourcePrefix 'base_'
     }
     buildTypes {
         release {
@@ -27,14 +27,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    sourceSets{
-        main{
-            if(rootProject.ext.isApplication){
+    sourceSets {
+        main {
+            if (rootProject.ext.isApplication) {
                 manifest.srcFile 'src/main/debug/AndroidManifest.xml'
-            }else{
-                manifest.srcFile 'src/main/release/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
                 //发布版的时候移除无用的资源
-                java{
+                java {
                     exclude "debug/**"
                 }
             }
@@ -45,13 +45,19 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation rootProject.ext.dependencies.supportV7
-    implementation  rootProject.ext.dependencies.constraintLayout
+    implementation rootProject.ext.dependencies.constraintLayout
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation rootProject.ext.dependencies.recyclerview
-    implementation 'io.reactivex.rxjava2:rxjava:'+rootProject.ext.dependencies.rxjava
-    implementation 'io.reactivex.rxjava2:rxandroid:'+rootProject.ext.dependencies.rxandroid
-    //引用base组件
-    implementation project(":module_base")
+    implementation 'io.reactivex.rxjava2:rxjava:' + rootProject.ext.dependencies.rxjava
+    implementation 'io.reactivex.rxjava2:rxandroid:' + rootProject.ext.dependencies.rxandroid
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    //ActivityRouter 注意要用api才能被其他module使用到，用implementation只在本module内部能被的调用，在外部隐藏
+    api 'com.github.mzule.activityrouter:activityrouter:' + rootProject.ext.dependencies.activityrouter
+    annotationProcessor 'com.github.mzule.activityrouter:compiler:' + rootProject.ext.dependencies.annotationActivityrouter
+}
+apply plugin: 'kotlin-android'
+repositories {
+    mavenCentral()
 }

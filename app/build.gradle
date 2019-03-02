@@ -9,6 +9,11 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
     }
     buildTypes {
         release {
@@ -22,14 +27,24 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation rootProject.ext.dependencies.supportV7
     implementation  rootProject.ext.dependencies.constraintLayout
+    implementation rootProject.ext.dependencies.recyclerview
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
+//    implementation rootProject.ext.dependencies.recyclerview
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation rootProject.ext.dependencies.recyclerview
     implementation 'io.reactivex.rxjava2:rxjava:'+rootProject.ext.dependencies.rxjava
     implementation 'io.reactivex.rxjava2:rxandroid:'+rootProject.ext.dependencies.rxandroid
+
+    //ActivityRouter
+//    implementation 'com.github.mzule.activityrouter:activityrouter:' + rootProject.ext.dependencies.activityrouter
+//    annotationProcessor 'com.github.mzule.activityrouter:compiler:' + rootProject.ext.dependencies.annotationActivityrouter
+
     if(!rootProject.ext.isApplication){
         //引用modulea 组件
         implementation project(":modulea")
+    }else{
     }
+    //引用base组件
+    implementation project(":module_base")
+
 }

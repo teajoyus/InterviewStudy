@@ -2,16 +2,14 @@ package com.example.interviewstudy;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -45,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         put("Rxjava study", com.example.interviewstudy.view.RxJavaActivity.class);
         put("SurfaceView study", com.example.interviewstudy.view.SurfaceViewActivity.class);
         put("launcher mode", com.example.interviewstudy.launchermode.LauncherModeActivity.class);
+        put("Activity Router", com.example.interviewstudy.router.RouterDemoActivity.class);
+        put("Activity Hook", com.example.interviewstudy.hook.HookActivity.class);
     }
     private void put(String key,Class clazz){
         title.add(key);
