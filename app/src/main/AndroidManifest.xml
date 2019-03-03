@@ -16,40 +16,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.SlideViewActivity"></activity>
-        <activity android:name=".view.LinearMeasureActivity"></activity>
-        <activity android:name=".view.RxJavaActivity"></activity>
-        <activity android:name=".view.SurfaceViewActivity"></activity>
-
-        <activity android:name=".launchermode.LauncherModeActivity"></activity>
-        <activity android:name=".launchermode.LauncherModeActivityB" android:launchMode="singleTop"></activity>
-        <activity android:name=".launchermode.LauncherModeActivityC" android:launchMode="singleTask"></activity>
-        <activity android:name=".launchermode.LauncherModeActivityD" android:launchMode="singleInstance"></activity>
-
-        <activity android:name=".router.RouterDemoActivity"></activity>
-        <activity android:name=".router.RouterActivityA"></activity>
-        <activity android:name=".router.RouterActivityB"></activity>
-
-
+        <activity android:name=".view.SlideViewActivity" />
+        <activity android:name=".view.LinearMeasureActivity" />
+        <activity android:name=".view.RxJavaActivity" />
+        <activity android:name=".view.SurfaceViewActivity" />
+        <activity android:name=".launchermode.LauncherModeActivity" />
+        <activity
+            android:name=".launchermode.LauncherModeActivityB"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".launchermode.LauncherModeActivityC"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".launchermode.LauncherModeActivityD"
+            android:launchMode="singleInstance" />
+        <activity android:name=".router.RouterDemoActivity" />
+        <activity android:name=".router.RouterActivityA" />
+        <activity android:name=".router.RouterActivityB" />
         <activity
             android:name="com.github.mzule.activityrouter.router.RouterActivity"
             android:theme="@android:style/Theme.NoDisplay">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="demo" /><!--改成自己的scheme-->
+
+                <data android:scheme="demo" /> <!-- 改成自己的scheme -->
             </intent-filter>
         </activity>
-
-
-
-
-
-
-
-
-        <activity android:name=".hook.HookActivity"></activity>
+        <activity android:name=".hook.HookActivity" />
+        <!--<activity android:name=".hook.HookAActivity" />-->
+        <activity android:name=".hook.HookBActivity"></activity>
     </application>
 
 </manifest>

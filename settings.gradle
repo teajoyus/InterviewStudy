@@ -1,2 +1,2 @@
-//include ':app', ':modulea', ':module_kotlin', ':module_base'
-include ':app', ':modulea', ':module_base'
+include ':app', ':modulea', ':module_kotlin', ':module_base'
+//include ':app', ':modulea', ':module_base'
