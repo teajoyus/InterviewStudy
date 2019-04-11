@@ -1,6 +1,5 @@
 package com.example.interviewstudy.hook;
 
-import android.app.Instrumentation;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -9,10 +8,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.example.interviewstudy.BaseActivity;
 import com.example.interviewstudy.R;
 
 import java.lang.reflect.Field;
@@ -23,15 +22,16 @@ import java.lang.reflect.Proxy;
  * Time: 2019\2\27 0027.10:52
  * Description:This is HookActivity
  */
-public class HookActivity extends AppCompatActivity {
+public class HookActivity extends BaseActivity {
     private static final String TAG = "lc_miao";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hook);
-        hookAMS();
-        hookActivityThread();
+//        hookAMS();
+//        hookActivityThread();
+//        hookInstrumentation();
         testRegistActivity();
         findViewById(R.id.btn_hook).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +42,7 @@ public class HookActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void testRegistActivity() {
         ComponentName componentName = new ComponentName(getApplicationContext(), HookAActivity.class);

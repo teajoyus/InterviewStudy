@@ -1,6 +1,6 @@
 刘望舒：http://liuwangshu.cn/application/view/1-coordinate-system.html
 
-
+Android的坐标系是以左上角为原点的，从原点以右为x轴正方向，从原点向下为y轴的正方向（有区别与数学上的坐标系的第四象限）
 
 ![](https://upload-images.jianshu.io/upload_images/1417629-0898e744ad00732d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 安卓的坐标原点是在左上角

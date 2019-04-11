@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".contentprovider.ContentResolverActivity">
+<Button
+    android:id="@+id/update_lv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="刷新数据"
+    android:onClick="update_lv"
+    />
+<Button
+    android:id="@+id/add"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="add"
+    android:onClick="add"
+    android:layout_below="@id/update_lv"
+    />
+<Button
+    android:id="@+id/del"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="del"
+    android:onClick="del"
+    android:layout_below="@id/add"
+    />
+<Button
+    android:id="@+id/update"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="update"
+    android:onClick="update"
+    android:layout_below="@id/del"
+    />
+<Button
+    android:id="@+id/query"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="query Count"
+    android:onClick="query"
+    android:layout_below="@id/update"
+    />
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/query"
+        ></ListView>
+</RelativeLayout>

@@ -1,2 +1,4 @@
-include ':app', ':modulea', ':module_kotlin', ':module_base'
+include ':app', ':modulea', ':module_kotlin', ':module_base', ':module_recyclerview'
+include':framework25'
+
 //include ':app', ':modulea', ':module_base'

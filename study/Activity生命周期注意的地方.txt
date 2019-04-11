@@ -34,3 +34,10 @@ onRestoreInstanceState方法是在onStart方法后才执行的。
 onCreate里面尽量少做事情，避免程序启动太久都看不到界面
 
 onCreate执行完之后会迅速到onStart被用户可见后再到onResume获取焦点。然后一直保持在Resumed状态直到Pause
+
+
+释放资源:https://blog.csdn.net/u011494050/article/details/37959289
+
+onPause:某种程度上说 这个周期的时候 界面还是可见的
+
+这个时候适合暂停一些动画、提交没保存的修改

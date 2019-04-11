@@ -1,6 +1,6 @@
 ext{
     //切换modulea工程是apk还是lib
-    isApplication=false
+    isApplication=true
     android=[
             compileSdkVersion:27,
             minSdkVersion:15,

@@ -20,18 +20,18 @@
 
 因为版本不同，里面的变量定义和相关类流程是有所差别的。
 
-2、要理解本篇内容，最好是已经大致了解Activity的启动过程，如果您你没了解过，建议你查看我前面写的：
+2、要理解本篇内容，最好是已经大致了解Activity的启动过程，如果您你没了解过，建议参考：
 
  [《Android开发知识（二十）Activity的启动过程源码追踪，看看startActivity方法背后干了什么事》](https://blog.csdn.net/lc_miao/article/details/88037499).
 
- [《Android开发知识（五）消息处理机制Handler+Looper+MessageQueue的原理分析（上）》](https://blog.csdn.net/lc_miao/article/details/77504343).
 
 关键的点在于理解startActivity的流程
 
-3、对Handler使用机制也有一些了解。
+3、对Handler使用机制也有一些了解。如果不是特别了解的话，也可以参考：
+ [《Android开发知识（五）消息处理机制Handler+Looper+MessageQueue的原理分析（上）》](https://blog.csdn.net/lc_miao/article/details/77504343).
 
 # 在AMS上做hook入口
-本篇章演示的是利用AMS做hook入口，与hook Instrumentation的原理是一样的。
+本篇章先演示的是利用AMS做hook入口，下面会继续演示 hook Instrumentation
 ## 反射获取ActivityManagerProxy实例
 我们在了解了Activity的启动过程之后，知道在Instrumentation的execStartActivity会执行：
 ```
@@ -644,9 +644,109 @@ public class HookAActivity extends AppCompatActivity {
 每个Activity内部都有一个Instrumentation成员变量，而这个Instrumentation成员变量都是共享自ActivityThread中创建的mInstrumentation。
 
 所以可以反射获取ActivityThread实例，然后把它的mInstrumentation变量替换成我们的Instrumentation代理对象。
-然后我们在Instrumentation代理对象中去拦截它的execStartActivity方法，修改它的Intent参数里面的ComponentNam
+然后我们在Instrumentation代理对象中去拦截它的execStartActivity方法，修改它的Intent参数里面的ComponentName
 
-原理差不多，在这里不再演示。
+原理差不多。
+
+需要注意的是，每个Activity都持有一个Instrumentation对引用，这个引用来自ActivityThread类里面创建的Instrumentation
+
+所以我们在hook的Instrumentation的时机应该是要放在Application创建时，倘若等到Launcher Activity创建之后再hook，那么Activity持有的引用还是原来那个Instrumentation。
+
+
+这里不多说 ，直接上代码了：
+```
+public class HookApplication extends Application {
+    private static final String TAG = "lc_miao";
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        hookInstrumentation();
+    }
+
+    private void hookInstrumentation() {
+        try {
+            Class<?> activityThread = Class.forName("android.app.ActivityThread");
+            Field mMainThread = getBaseContext().getClass().getDeclaredField("mMainThread");
+            mMainThread.setAccessible(true);
+            Object o = mMainThread.get(getBaseContext());
+            Log.i(TAG, "mMainThread:" + o);
+            Field mInstrumentation = o.getClass().getDeclaredField("mInstrumentation");
+            mInstrumentation.setAccessible(true);
+            Instrumentation instrumentation = (Instrumentation) mInstrumentation.get(o);
+            Log.i(TAG, "instrumentation:" + instrumentation);
+            InstrumentationProxy proxy = new InstrumentationProxy(instrumentation);
+            mInstrumentation.set(o, proxy);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+    }
+ }
+```
+
+InstrumentationProxy是我们写的代理类，我们需要代理Instrumentation这个对象，所以也需要把原本的这个Instrumentation引用构建进来
+
+在代理execStartActivity方法时，由于这个方法是隐藏的，我们没法直接调用，所以只能用反射来调用原本的Instrumentation对象方法。
+而newActivity方法则没隐藏而且还是共有的，所以我们可以直接使用，不需要反射。
+
+InstrumentationProxy类如下：
+```
+public static class InstrumentationProxy extends Instrumentation {
+        protected Instrumentation instrumentation;
+
+        public InstrumentationProxy(Instrumentation instrumentation) {
+            this.instrumentation = instrumentation;
+        }
+
+        public ActivityResult execStartActivity(
+                Context who, IBinder contextThread, IBinder token, Activity target,
+                Intent intent, int requestCode, Bundle options) {
+            Log.i(TAG, "proxy execStartActivity");
+            //在启动Activity的时候，在Intent里面传入一个假的已经注册的Activity的ComponentName
+            ComponentName fakeComponentName =intent.getParcelableExtra("fakeComponentName");
+            if(fakeComponentName!=null){
+                intent.putExtra("realComponentName",intent.getComponent());
+                intent.setComponent(fakeComponentName);
+            }
+            Class[] classes = new Class[]{Context.class, IBinder.class, IBinder.class, Activity.class, Intent.class, int.class, Bundle.class};
+            try {
+                Method method = getClass().getSuperclass().getDeclaredMethod("execStartActivity", classes);
+                Log.i(TAG, "proxy execStartActivity Method:" + method);
+                if (method != null) {
+                    //注意这里的obj必须用原本的Instrumentation
+                    return (ActivityResult) method.invoke(instrumentation, new Object[]{who, contextThread, token, target, intent, requestCode, options});
+                }
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        public Activity newActivity(ClassLoader cl, String className,
+                                    Intent intent)throws InstantiationException, IllegalAccessException,
+                ClassNotFoundException {
+            Log.i(TAG, "proxy newActivity");
+            //拿到真实的ComponentName
+            ComponentName componentName = intent.getParcelableExtra("realComponentName");
+            if (componentName != null) {
+                className = componentName.getClassName();
+            }
+           return instrumentation.newActivity(cl,className,intent);
+
+        }
+    }
+```
 
 # 结束语
+
+本篇分别演示了hook AMS和Instrumentation的过程，两者相比，代理Instrumentation会相对简单一些。
 
