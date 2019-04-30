@@ -1,7 +1,8 @@
 package com.example.interviewstudy.fragment;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.DialogFragment;
 import android.os.Bundle;
+import android.view.ViewGroup;
 
 import com.example.interviewstudy.BaseActivity;
 import com.example.interviewstudy.R;
@@ -12,5 +13,8 @@ public class FragmentDemoActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment_demo);
+//        getFragmentManager().beginTransaction()
+//                .addToBackStack()
+        DialogFragment
     }
 }
