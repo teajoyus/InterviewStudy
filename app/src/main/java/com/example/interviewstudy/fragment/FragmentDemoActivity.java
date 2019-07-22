@@ -15,6 +15,5 @@ public class FragmentDemoActivity extends BaseActivity {
         setContentView(R.layout.activity_fragment_demo);
 //        getFragmentManager().beginTransaction()
 //                .addToBackStack()
-        DialogFragment
     }
 }

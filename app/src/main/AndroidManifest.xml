@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.interviewstudy">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 声明本应用 可允许ContentProvidier通信的权限 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 声明本应用 可允许ContentProvidier通信的权限 -->
     <permission
         android:name="com.example.interviewstudy.contentprovider"
         android:protectionLevel="normal" />
@@ -16,6 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".view.ConstraintLayoutActivity"></activity>
+        <activity android:name=".rxjava.RxJavaActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,8 +54,7 @@
                 <data android:scheme="demo" /> <!-- 改成自己的scheme -->
             </intent-filter>
         </activity>
-        <activity android:name=".hook.HookActivity" />
-        <!-- <activity android:name=".hook.HookAActivity" /> -->
+        <activity android:name=".hook.HookActivity" /> <!-- <activity android:name=".hook.HookAActivity" /> -->
         <activity
             android:name=".hook.HookBActivity"
             android:label="demo" />
@@ -82,7 +82,7 @@
             android:process=":provider" />
 
         <activity android:name=".contentprovider.ContentResolverActivity" />
-        <activity android:name=".trace.TraceMethedActivity"></activity>
+        <activity android:name=".trace.TraceMethedActivity" />
     </application>
 
 </manifest>

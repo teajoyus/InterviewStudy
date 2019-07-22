@@ -72,6 +72,7 @@ public class MainActivity extends BaseActivity {
         put("自定义流式布局", com.example.interviewstudy.view.FlowActivity.class);
         put("ContentResolverActivity", com.example.interviewstudy.contentprovider.ContentResolverActivity.class);
         put("trace methed", com.example.interviewstudy.trace.TraceMethedActivity.class);
+        put("ConstraintLayout用法", com.example.interviewstudy.view.ConstraintLayoutActivity.class);
     }
     private void put(String key,Class clazz){
         title.add(key);

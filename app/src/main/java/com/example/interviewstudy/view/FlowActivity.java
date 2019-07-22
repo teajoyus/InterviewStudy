@@ -97,7 +97,7 @@ public class FlowActivity extends BaseActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 Gson gson = new Gson();
                 final HotKey hotKey = gson.fromJson(response.body().string(), HotKey.class);
-                runOnUiThread(new Runnable() {
+                  runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         for (int i = 0; i < hotKey.getData().size(); i++) {
