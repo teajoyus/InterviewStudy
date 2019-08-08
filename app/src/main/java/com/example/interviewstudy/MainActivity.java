@@ -18,6 +18,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.interviewstudy.jni.JniActivity;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -73,6 +75,7 @@ public class MainActivity extends BaseActivity {
         put("ContentResolverActivity", com.example.interviewstudy.contentprovider.ContentResolverActivity.class);
         put("trace methed", com.example.interviewstudy.trace.TraceMethedActivity.class);
         put("ConstraintLayout用法", com.example.interviewstudy.view.ConstraintLayoutActivity.class);
+        put("jni 调用", JniActivity.class);
     }
     private void put(String key,Class clazz){
         title.add(key);

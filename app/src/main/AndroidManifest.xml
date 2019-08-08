@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.ConstraintLayoutActivity"></activity>
+        <activity android:name=".jni.JniActivity"></activity>
+        <activity android:name=".view.ConstraintLayoutActivity" />
         <activity android:name=".rxjava.RxJavaActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

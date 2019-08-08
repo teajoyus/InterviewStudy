@@ -28,7 +28,6 @@ public class MyDefinedActivity extends AppCompatActivity {
     RecyclerView rv;
     Handler handler = new Handler();
     List<News> newsList;
-    ListView
     void showToast(String str){
         Toast.makeText(this,str,Toast.LENGTH_SHORT).show();
     }

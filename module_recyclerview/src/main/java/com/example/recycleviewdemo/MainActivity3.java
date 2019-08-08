@@ -29,7 +29,6 @@ public class MainActivity3 extends AppCompatActivity {
     List<News> newsList;
     void showToast(String str){
         Toast.makeText(this,str,Toast.LENGTH_SHORT).show();
-        Activity
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
