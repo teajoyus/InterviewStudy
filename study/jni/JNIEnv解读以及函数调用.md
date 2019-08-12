@@ -17,5 +17,6 @@ typedef const struct JNINativeInterface *JNIEnv;
 -----
 
 ```
+
 jint GetVersion(JNIEnv *env);
 ```

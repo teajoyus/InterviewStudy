@@ -19,7 +19,7 @@ android {
         ndk {
 
             moduleName "my_jni_call"
-            abiFilters "armeabi-v7a","arm64-v8a", "x86","x86_64"
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
             ldLibs "log"
 
         }
@@ -34,6 +34,11 @@ android {
             jniLibs.srcDirs = ['src/main/libs']
             jni.srcDirs = [] //屏蔽掉默认的jni编译生成过程
         }
+    }
+    //flutter相关声明
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
     }
 }
 
@@ -58,6 +63,9 @@ dependencies {
         implementation project(":modulea")
     } else {
     }
+    //导入flutter
+    implementation project(':my_flutter')
+
     //引用base组件
     implementation project(':module_base')
     implementation project(':module_kotlin')

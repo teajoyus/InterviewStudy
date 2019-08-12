@@ -64,6 +64,14 @@ static int jniRegisterNativeMethods(JNIEnv* env, const char* className,
     return result;
 }
 
+/**
+* 学习：jni加载类
+*
+*/
+void load_Class(JNIEnv* env){
+    jclass clazz = NULL;
+    clazz = (*env)->DefineClass(env,"",);
+}
 
 
 jint JNI_OnLoad(JavaVM* vm, void* reserved){
@@ -77,5 +85,8 @@ jint JNI_OnLoad(JavaVM* vm, void* reserved){
 
     jniRegisterNativeMethods(env, className, gJni_Methods_table, sizeof(gJni_Methods_table) / sizeof(JNINativeMethod));
 
+    (*env)->
+
     return JNI_VERSION_1_4;
 }
+
