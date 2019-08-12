@@ -16,7 +16,7 @@ import com.example.interviewstudy.R;
  * Description:This is LauncherModeActivity
  */
 public class LauncherModeActivityC extends AppCompatActivity {
-
+    public Class clazz=  LauncherModeActivityD.class;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +24,11 @@ public class LauncherModeActivityC extends AppCompatActivity {
         TextView tv = findViewById(R.id.tv);
         tv.setText("我是C");
         Button btn = findViewById(R.id.btn);
-        btn.setText("跳转到D");
+        btn.setText("跳转到："+clazz.getSimpleName());
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LauncherModeActivityC.this,LauncherModeActivityD.class));
+                startActivity(new Intent(LauncherModeActivityC.this,clazz));
             }
         });
     }

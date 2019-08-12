@@ -10,8 +10,11 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.example.interviewstudy.R;
@@ -27,6 +30,28 @@ public class LinearMeasureActivity extends AppCompatActivity {
         Log.i("2222222222222","onCreate "+this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear_measure);
+        ListView listView = null;
+        listView.setAdapter(new BaseAdapter() {
+            @Override
+            public int getCount() {
+                return 0;
+            }
+
+            @Override
+            public Object getItem(int position) {
+                return null;
+            }
+
+            @Override
+            public long getItemId(int position) {
+                return 0;
+            }
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                return null;
+            }
+        });
     }
 
     @Override

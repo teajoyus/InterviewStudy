@@ -28,7 +28,7 @@ import io.reactivex.internal.schedulers.NewThreadScheduler;
  * Description:This is LauncherModeActivity
  */
 public class LauncherModeActivity extends BaseActivity {
-
+    public Class clazz=  LauncherModeActivity.class;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,15 +37,29 @@ public class LauncherModeActivity extends BaseActivity {
         tv.setText("我是A");
         log_i("硬件加速"+tv.isHardwareAccelerated());
         Button btn = findViewById(R.id.btn);
-        btn.setText("跳转到B");
+        btn.setText("跳转到："+clazz.getSimpleName());
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LauncherModeActivity.this,LauncherModeActivityB.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                Intent intent = new Intent(LauncherModeActivity.this,clazz);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivityForResult(intent,200);
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intent = new Intent();
+        intent.putExtra("data","setResult方法被调用");
+        setResult(100,intent);
     }
 
     @Override
@@ -53,9 +67,14 @@ public class LauncherModeActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
         log_i("onActivityResult");
         if(data!=null){
-            log_i(data.getStringExtra("data"));
+            log_life("onActivityResult data: "+data.getStringExtra("data"));
         }else{
-            log_i("onActivityResult intent=null");
+            log_life("onActivityResult intent= null");
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

@@ -7,13 +7,13 @@ standard 模式默认启动的Activity会和启动它的Activity在同一任务�
 
 singleTask不是说开启一个新的任务栈
 ----------------------
-需要注意的是singleTask不一定有开启新的任务栈的，默认还是在原来的栈中，只是说看是否原来栈中有没有实例
+需要注意的是singleTask不是开启新的任务栈的，默认还是在原来的栈中，只是说看是否原来栈中有没有实例
 
 而singleTop则是看原来栈顶是否有实例
 
-要在新的任务栈则需要配合FLAG_ACTIVITY_NEW_TASK才行
+要在新的任务栈则需要配合FLAG_ACTIVITY_NEW_TASK才行，而且需要结合taskAffinity，用这个命令的时候要看taskAffinity（Manifest中指定）是否和当前的不一样
 
-
+如果是一样的taskAffinity即使用这个属性也是在同个栈中，如果是不一样的，则会把那个任务栈调到前台来
 
 FLAG_ACTIVITY_NEW_TASK与onActivityResult
 --------------
@@ -70,3 +70,22 @@ FLAG_ACTIVITY_CLEAR_TOP
  singleTask：我们一般的Home 主页就是用singleTask 用户在回到主页的时候 连同栈内其他Activity会被清除出栈
 
  singleInstance：就是整个APP里面只有这个实例，并且跟其他Activity无关联。注意因为不同栈 返回的问题，
+
+
+
+ 自己测试过的案例
+ ---------------
+ A是standrand B是singleTask C是singleInstance
+ 那么A -> B -> C -> B
+ 这样的回退栈就是 B A C
+ 解释：A启动B，他们在同个task， B启动C C在一个新的task，C启动B B的task移动到前台，而这个task还有个A 那么A会先出栈，顺序后面的task就是C的task
+
+ 只用 FLAG_ACTIVITY_NEW_TASK
+ 不会创建新栈
+
+用 FLAG_ACTIVITY_NEW_TASK 同时在AndroidManifest.xml中声明taskAffinity
+会创建新栈
+
+只声明taskAffinity不用FLAG_ACTIVITY_NEW_TASK
+不会创建新栈
+

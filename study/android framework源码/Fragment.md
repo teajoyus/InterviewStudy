@@ -1,0 +1,30 @@
+下面要解析的是针对android.app.Fragment
+
+
+我们操作Fragment，无非就是两种做法，一种是在xml里直接配置静态的fragment，一种是动态添加fragment。通常来说我们一般都是使用第二种
+而第二种做法也特别简单，就是先 getFragmentManager().beginTransaction()拿到一个Fragment事务，然后调用add或者replace之类的方法，最后调用commit进行提交。复杂一点的话就是考虑一个回退栈的问题
+
+我们顺着这个来分析下这个过程是怎么实现的。
+首先是getFragmentManager()
+
+
+//不写博客了
+
+原理也是添加一个View，只是这个View有生命周期
+
+我们每次add和replace都是对一个Op操作，成一个链表后，然后调用commit会去循环取出这个Op链表，然后一个一个执行
+
+比如执行相应的ADD操作 REPLEACE操作
+
+REPLACE操作的时候如果找不到可替代的fragment，那么就相当于是ADD操作。所以一般用replace不用add
+
+
+然后调用addFragment方法，最终有个moveToState方法
+
+在该方法里面用一个switch来包括了Fragment的生命周期，注意switch是没有break的，上一个case执行完后会执行下一个case，
+比如走初始化后下一个case会有RESUME，RESUME后下一个case是PAUSE不满足状态那么不会执行
+
+
+包括我们执行hide方法和show方法也是对View设置GONE和VISIABLE
+
+

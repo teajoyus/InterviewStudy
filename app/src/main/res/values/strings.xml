@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">InterviewStudy</string>
+    <string name="title_activity_service">ServiceActivity</string>
 </resources>

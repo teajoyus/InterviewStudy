@@ -6,9 +6,10 @@ import android.content.ComponentName;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.interviewstudy.BaseActivity;
 import com.example.interviewstudy.R;
 
-public class HookAActivity extends AppCompatActivity {
+public class HookAActivity extends BaseActivity {
     ComponentName fakeComponentName;
     @Override
     public ComponentName getComponentName() {

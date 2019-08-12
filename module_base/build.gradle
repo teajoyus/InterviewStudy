@@ -1,17 +1,17 @@
-if (rootProject.ext.isApplication) {
-    apply plugin: 'com.android.application'
-} else {
-    apply plugin: 'com.android.library'
-}
-
+//if (rootProject.ext.isApplication) {
+//    apply plugin: 'com.android.application'
+//} else {
+//    apply plugin: 'com.android.library'
+//}
+apply plugin: 'com.android.library'
 
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
-        if (rootProject.ext.isApplication) {
-            applicationId 'com.example.base'
-        }
+//        if (rootProject.ext.isApplication) {
+//            applicationId 'com.example.base'
+//        }
 
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion

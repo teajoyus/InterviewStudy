@@ -1,6 +1,10 @@
 package com.example.interviewstudy;
 
+import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
+
+import com.example.interviewstudy.trace.TraceMethedActivity;
 
 /**
  * 
@@ -13,12 +17,18 @@ public class MyLogger {
 
 	public final static String tag = "[linmh]";
 	private String mClassName;
+	public String tag2;
 	private static MyLogger dlog;
 	private static MyLogger slog;
 	private static final String TAG = "@linmh@ ";
+	public MyLogger(String name,String tag) {
+		mClassName = name;
+		this.tag2 = tag;
+	}
 	public MyLogger(String name) {
 		mClassName = name;
 	}
+	/**
 	/**
 	 * Purpose:Mark user one
 	 * 
@@ -79,9 +89,17 @@ public class MyLogger {
 		if (logFlag) {
 			String name = getFunctionName();
 			if (name != null) {
-				Log.i(tag, name + " - " + str);
+				if(tag2!=null){
+					Log.i(tag2, name + " - " + str);
+				}else{
+					Log.i(tag, name + " - " + str);
+				}
 			} else {
-				Log.i(tag, str.toString());
+				if(tag2!=null){
+					Log.i(tag2, str.toString());
+				}else{
+					Log.i(tag, str.toString());
+				}
 			}
 		}
 	}
@@ -173,5 +191,41 @@ public class MyLogger {
 			Log.e(tag, "{Thread:" + Thread.currentThread().getName() + "}"
 					+ "[" + mClassName + line + ":] " + log + "\n", tr);
 		}
+	}
+
+
+
+	public static void main(String[] args){
+		System.out.println("123");
+		final MyLogger activity = new MyLogger("");
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				activity.testANR();
+			}
+		}).start();
+
+		try {
+			Thread.sleep(10);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		activity.initView();
+	}
+
+	private synchronized static  void testANR() {
+		initView();
+		System.out.println("testANR");
+		try {
+			Thread.sleep(5 * 1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("testANR2");
+
+	}
+
+	private static  synchronized void initView(){
+		System.out.println("initView");
 	}
 }
