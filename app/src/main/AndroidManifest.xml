@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".flutter.FlutterActivity"
+            android:name=".flutter.FlutterDemoActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
     </activity>
 

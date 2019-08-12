@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,10 +14,9 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.interviewstudy.flutter.FlutterActivity;
+import com.example.interviewstudy.flutter.FlutterDemoActivity;
 import com.example.interviewstudy.jni.JniActivity;
 
 import java.util.ArrayList;
@@ -77,7 +75,7 @@ public class MainActivity extends BaseActivity {
         put("trace methed", com.example.interviewstudy.trace.TraceMethedActivity.class);
         put("ConstraintLayout用法", com.example.interviewstudy.view.ConstraintLayoutActivity.class);
         put("jni 调用", JniActivity.class);
-        put("Flutter", FlutterActivity.class);
+        put("Flutter", FlutterDemoActivity.class);
     }
     private void put(String key,Class clazz){
         title.add(key);
