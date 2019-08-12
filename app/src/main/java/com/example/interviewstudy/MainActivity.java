@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         put("launcher mode", com.example.interviewstudy.launchermode.LauncherModeActivity.class);
         put("Activity Router", com.example.interviewstudy.router.RouterDemoActivity.class);
         put("Activity Hook", com.example.interviewstudy.hook.HookActivity.class);
+        put("Activity Play", com.example.interviewstudy.video.PlayActivity.class);
     }
     private void put(String key,Class clazz){
         title.add(key);

@@ -10,7 +10,6 @@ import com.example.interviewstudy.R;
 
 public class HookAActivity extends AppCompatActivity {
     ComponentName fakeComponentName;
-    Instrumentation
     @Override
     public ComponentName getComponentName() {
         return fakeComponentName!=null?fakeComponentName:super.getComponentName();
