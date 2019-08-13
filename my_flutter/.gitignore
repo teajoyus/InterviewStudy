@@ -1,7 +1,7 @@
 .DS_Store
 .dart_tool/
 
-.packages
+#.packages
 .pub/
 
 .idea/
@@ -30,10 +30,10 @@ xcuserdata
 
 *.moved-aside
 
-*.pyc
+#*.pyc
 *sync/
-Icon?
-.tags*
+#Icon?
+#.tags*
 
 build/
 #.android/

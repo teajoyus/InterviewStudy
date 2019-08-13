@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/module_kotlin" />
             <option value="$PROJECT_DIR$/module_recyclerview" />
             <option value="$PROJECT_DIR$/modulea" />
+            <option value="$PROJECT_DIR$/my_flutter/.android/Flutter" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

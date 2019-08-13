@@ -38,12 +38,12 @@ object SingletonObject {
 fun demoNotNullCall(str: String): Int {
 
     //相当于java的if(str!=null)
-    str?.let {
+    str.let {
 
         println("str is not null")
     }
 
-    return str?.length
+    return str.length
 }
 
 /**

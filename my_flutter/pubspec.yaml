@@ -1,4 +1,4 @@
-name: my_flutter
+name: flutter_app
 description: A new flutter module project.
 
 # The following defines the version and build number for your application.
@@ -82,5 +82,5 @@ flutter:
   # identifiers, which may be completely independent or the same as these.
   module:
     androidX: false
-    androidPackage: com.example.my_flutter
-    iosBundleIdentifier: com.example.myFlutter
+    androidPackage: com.example.flutter_app
+    iosBundleIdentifier: com.example.flutterApp
