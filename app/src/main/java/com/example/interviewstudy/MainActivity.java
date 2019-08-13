@@ -50,6 +50,13 @@ public class MainActivity extends BaseActivity {
         rv.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         initData();
         rv.setAdapter(new MyAdapter());
+
+
+        try{
+            throw new UnsatisfiedLinkError();
+        }catch (Throwable e){
+            e.printStackTrace();
+        }
     }
 
     @Override

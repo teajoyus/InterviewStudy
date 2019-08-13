@@ -94,7 +94,7 @@ fun printWhen(obj: Any): String {
  */
 
 fun printCheckRange() {
-    val a = 1.5f
+    val a = 1
     val b = 8
     //暂时测试 可以是Int Float Long，不能是Boolean String等其它类型
     if (a in 1..b) {

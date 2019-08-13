@@ -35,6 +35,9 @@ android {
                 //发布版的时候移除无用的资源
                 java {
                     exclude "debug/**"
+//                    exclude "com.example.kotlin.Study*"
+                    exclude "com.example.kotlin.Study1.kt"
+                    exclude "com.example.kotlin.Study2.kt"
                 }
             }
         }

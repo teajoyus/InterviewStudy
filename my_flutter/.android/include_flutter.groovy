@@ -3,8 +3,8 @@
 def scriptFile = getClass().protectionDomain.codeSource.location.toURI()
 def flutterProjectRoot = new File(scriptFile).parentFile.parentFile
 
-gradle.include ':my_flutter'
-gradle.project(':my_flutter').projectDir = new File(flutterProjectRoot, '.android/Flutter')
+gradle.include ':flutter'
+gradle.project(':flutter').projectDir = new File(flutterProjectRoot, '.android/Flutter')
 
 def plugins = new Properties()
 def pluginsFile = new File(flutterProjectRoot, '.flutter-plugins')
@@ -27,8 +27,8 @@ gradle.getGradle().projectsLoaded { g ->
     }
     g.rootProject.afterEvaluate { p ->
         p.subprojects { sp ->
-            if (sp.name != 'my_flutter') {
-                sp.evaluationDependsOn(':my_flutter')
+            if (sp.name != 'flutter') {
+                sp.evaluationDependsOn(':flutter')
             }
         }
     }

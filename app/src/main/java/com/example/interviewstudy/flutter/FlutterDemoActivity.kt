@@ -1,6 +1,7 @@
 package com.example.interviewstudy.flutter
 
 import android.os.Bundle
+import android.os.SystemClock
 import android.support.constraint.ConstraintLayout
 import android.support.v7.app.AppCompatActivity
 import android.view.ViewGroup
@@ -32,13 +33,13 @@ import io.flutter.view.FlutterView
 //}
 
 class FlutterDemoActivity : FlutterActivity() {
-    private val channelName = "samples.flutter.io/counter_native33333"
+    private val channelName = "samples.flutter.io/demo"
+    //val 只读，相当于 final
+    val context = this
     override fun onCreate(savedInstanceState: Bundle?) {
         FlutterMain.startInitialization(applicationContext)
         super.onCreate(savedInstanceState)
-        //val 只读，相当于 final
-        val context = this
-        GeneratedPluginRegistrant.registerWith(this)
+        GeneratedPluginRegistrant.registerWith(context)
         MethodChannel(flutterView, channelName).setMethodCallHandler { methodCall, result ->
             when (methodCall.method) {
                 "getDemoString" -> {
@@ -53,6 +54,6 @@ class FlutterDemoActivity : FlutterActivity() {
     }
 
     fun getDemoString(): String {
-        return "haha this is a ${toString()}"
+        return "now elapsed real time:${SystemClock.elapsedRealtime()}"
     }
 }

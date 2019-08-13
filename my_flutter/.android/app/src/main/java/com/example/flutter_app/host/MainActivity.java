@@ -1,4 +1,4 @@
-package com.example.my_flutter.host;
+package com.example.flutter_app.host;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
