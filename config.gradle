@@ -1,6 +1,7 @@
 ext{
     //切换modulea工程是apk还是lib
     isApplication=false
+    isFlutterApplication = true
     android=[
             compileSdkVersion:28,
             minSdkVersion:16,

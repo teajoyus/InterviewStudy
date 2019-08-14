@@ -62,9 +62,12 @@ dependencies {
     } else {
     }
     //导入flutter
-//    implementation project(':flutter')
-    implementation project(':flutter')
-
+    if (!rootProject.ext.isFlutterApplication) {
+        implementation project(":flutter")
+    }
+//    if (!rootProject.ext.isFlutterApplication) {
+//        implementation project(':flutterstudy')
+//    }
     //引用base组件
     implementation project(':module_base')
     implementation project(':module_kotlin')
