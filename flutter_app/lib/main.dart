@@ -3,10 +3,19 @@
 // This sample shows an [AppBar] with two simple actions. The first action
 // opens a [SnackBar], while the second action navigates to a new page.
 
+import 'dart:io';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  debugPaintSizeEnabled = true;
+  runApp(MyApp());
 
+}
+const int a = 23;
+//final int a =25;
 /// This Widget is the main application widget.
 class MyApp extends StatelessWidget {
   static const String _title = 'Flutter Code Sample';
@@ -20,60 +29,39 @@ class MyApp extends StatelessWidget {
   }
 }
 
-final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-final SnackBar snackBar = const SnackBar(content: Text('Showing Snackbar'));
-
-void openPage(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(
-    builder: (BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text('Next page'),
-        ),
-        body: const Center(
-          child: Text(
-            'This is the next page',
-            style: TextStyle(fontSize: 24),
-          ),
-        ),
-      );
-    },
-  ));
-}
-
 /// This is the stateless widget that the main application instantiates.
 class MyStatelessWidget extends StatelessWidget {
   MyStatelessWidget({Key key}) : super(key: key);
-
+  final TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    //比onChange回调函数更先被回调
+    _controller.addListener((){
+      print("_controller selection:${_controller.selection} - ${_controller.selection.start}");
+      print("_controller text:${_controller.text}");
+//      showDialog(context: context,
+//        builder: (BuildContext context) => AlertDialog(
+//          title: Text("您输入了"),
+//          content: Text("${_controller.text}"),
+//        ),
+//      );
+    });
+
     return Scaffold(
-      key: scaffoldKey,
-      appBar: AppBar(
-        title: const Text('AppBar Demo'),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.add_alert),
-            tooltip: 'Show Snackbar',
-            onPressed: () {
-              scaffoldKey.currentState.showSnackBar(snackBar);
-            },
+      appBar: AppBar(title: Text('文本输入'),),
+      body: Center(
+        child: TextField(
+          //每次输入都能回调已经输入的文本
+          onChanged:(String str){
+            print("str:$str");
+            debugDumpApp();
+          } ,
+          decoration: InputDecoration(
+            hintText: '这是hint text a = $a'
           ),
-          IconButton(
-            icon: const Icon(Icons.navigate_next),
-            tooltip: 'Next page',
-            onPressed: () {
-              openPage(context);
-            },
-          ),
-        ],
-      ),
-      body: const Center(
-        child: Text(
-          'This is the home page',
-          style: TextStyle(fontSize: 24),
+          controller: _controller,
         ),
-      ),
+      )
     );
   }
 }
