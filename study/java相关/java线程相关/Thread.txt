@@ -23,7 +23,9 @@ join()还能传个long型参数，表示等待多少ms
 
 那么calling thread调用join并没有持有t对象的锁，那么即使在join传入个毫秒参数，也是要等到synchronized同步快执行完才能往下执行
 
-(需要再仔细理解)
+(需要再仔细理解 打叉)
+（自己再次理解：也就是join这个方法里面是获取t这个对象锁（join方法声明了一个方法级的synchronized），那么如果线程t如果刚好获得它自身的锁，
+这时候对于call thread来说，它要调用join的时候没获得锁就阻塞了，尽管在join传入了个时间也没用，需要等待t释放锁了才轮到它）
 
 
 在理解了Object的wait和notify方法之后，看懂了join的源码：
