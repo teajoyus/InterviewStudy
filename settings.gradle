@@ -1,7 +1,9 @@
 include ':app', ':modulea', ':module_kotlin', ':module_base', ':module_recyclerview'
 include':framework25'
+include ':javalib'
 //include ':app', ':modulea', ':module_base'
-setBinding(new Binding([gradle: this]))
-evaluate(new File(
-        rootDir.path + '/my_flutter/.android/include_flutter.groovy'
-))
+//setBinding(new Binding([gradle: this]))
+//evaluate(new File(
+//        rootDir.path + '/my_flutter/.android/include_flutter.groovy'
+//))
+
