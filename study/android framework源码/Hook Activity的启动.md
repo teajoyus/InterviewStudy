@@ -105,8 +105,8 @@ public abstract class Singleton<T> {
 在这里我为了演示，我们就新建一个HookActivity吧，然后在里面运行打印出来：
 ```
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+ import androidx.annotation.Nullable;
+ 
 import android.util.Log;
 import com.example.hook.R;
 import java.lang.reflect.Field;

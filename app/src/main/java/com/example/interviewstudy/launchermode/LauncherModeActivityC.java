@@ -2,12 +2,14 @@ package com.example.interviewstudy.launchermode;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.Nullable;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.interviewstudy.BaseActivity;
 import com.example.interviewstudy.R;
 
 /**
@@ -15,8 +17,9 @@ import com.example.interviewstudy.R;
  * Time: 2019\2\16 0016.9:38
  * Description:This is LauncherModeActivity
  */
-public class LauncherModeActivityC extends AppCompatActivity {
-    public Class clazz=  LauncherModeActivityD.class;
+public class LauncherModeActivityC extends BaseActivity {
+    public Class clazz = LauncherModeActivityD.class;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +27,11 @@ public class LauncherModeActivityC extends AppCompatActivity {
         TextView tv = findViewById(R.id.tv);
         tv.setText("我是C");
         Button btn = findViewById(R.id.btn);
-        btn.setText("跳转到："+clazz.getSimpleName());
+        btn.setText("跳转到：" + clazz.getSimpleName());
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LauncherModeActivityC.this,clazz));
+                startActivity(new Intent(LauncherModeActivityC.this, clazz));
             }
         });
     }

@@ -3,10 +3,8 @@ package com.example.interviewstudy.view;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Handler;
-import android.support.v4.view.LayoutInflaterCompat;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;

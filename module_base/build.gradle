@@ -46,16 +46,19 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation rootProject.ext.dependencies.supportV7
     implementation rootProject.ext.dependencies.constraintLayout
+    implementation rootProject.ext.dependencies.recyclerview
+    implementation rootProject.ext.dependencies.design
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation rootProject.ext.dependencies.recyclerview
     implementation 'io.reactivex.rxjava2:rxjava:' + rootProject.ext.dependencies.rxjava
     implementation 'io.reactivex.rxjava2:rxandroid:' + rootProject.ext.dependencies.rxandroid
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     //ActivityRouter 注意要用api才能被其他module使用到，用implementation只在本module内部能被的调用，在外部隐藏
     api 'com.github.mzule.activityrouter:activityrouter:' + rootProject.ext.dependencies.activityrouter
     annotationProcessor 'com.github.mzule.activityrouter:compiler:' + rootProject.ext.dependencies.annotationActivityrouter
+    //kotlin
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:'+rootProject.ext.dependencies.kotlin_version
 }
 apply plugin: 'kotlin-android'
 repositories {

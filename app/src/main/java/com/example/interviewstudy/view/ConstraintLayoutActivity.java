@@ -1,11 +1,12 @@
 package com.example.interviewstudy.view;
 
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 
+import com.example.interviewstudy.BaseActivity;
 import com.example.interviewstudy.R;
 
-public class ConstraintLayoutActivity extends AppCompatActivity {
+public class ConstraintLayoutActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

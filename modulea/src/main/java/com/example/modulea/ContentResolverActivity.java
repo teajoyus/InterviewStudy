@@ -1,13 +1,13 @@
 package com.example.modulea;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ContentResolverActivity extends AppCompatActivity {
     public static final String MY_CONTENT_PROVIDER_URI = "content://com.example.interviewstudy.contentprovider.MyContentProvider";

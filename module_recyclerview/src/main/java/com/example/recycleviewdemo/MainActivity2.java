@@ -2,14 +2,6 @@ package com.example.recycleviewdemo;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.OrientationHelper;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -17,6 +9,15 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.OrientationHelper;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,12 +45,12 @@ public class MainActivity2 extends AppCompatActivity {
 
         //分割线的接口没有实现类 需要自己实现
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,DividerItemDecoration.VERTICAL);
-        if(!(rv.getLayoutManager() instanceof  StaggeredGridLayoutManager)){
+        if(!(rv.getLayoutManager() instanceof StaggeredGridLayoutManager)){
             rv.addItemDecoration(dividerItemDecoration);
         }
         rv.setItemAnimator(new DefaultItemAnimator());
         //默认就是垂直
-        ((LinearLayoutManager) layoutManager).setOrientation(OrientationHelper.VERTICAL);
+        ((LinearLayoutManager) layoutManager).setOrientation(RecyclerView.VERTICAL);
         //当item改变不会重新计算item的宽高
         //调用adapter的增删改差方法的时候就不会重新计算，但是调用nofityDataSetChange的时候还是会
         //所以往往是直接先设置这个为true，当需要布局重新计算宽高的时候才调用nofityDataSetChange

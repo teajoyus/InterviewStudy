@@ -6,8 +6,9 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+ import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.example.interviewstudy.BaseActivity;
 import com.example.interviewstudy.R;
 
 /**
@@ -24,7 +26,7 @@ import com.example.interviewstudy.R;
  * Time: 2019\1\25 0025.11:38
  * Description:This is SlideViewActivity
  */
-public class SlideViewActivity extends AppCompatActivity {
+public class SlideViewActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +50,7 @@ public class SlideViewActivity extends AppCompatActivity {
         });
     }
 
-    class MyView extends android.support.v7.widget.AppCompatButton {
+    class MyView extends AppCompatButton {
 
         public MyView(Context context) {
             super(context);
