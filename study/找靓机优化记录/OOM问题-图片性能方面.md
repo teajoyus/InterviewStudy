@@ -109,3 +109,30 @@ QRCodeEncoder.syncEncodeQRCode(strings[0], BGAQRCodeUtil.dp2px(mContext, 150), C
  - 。。。
 未完~
 
+## onLowMemory()&onTrimMemory()
+本来想自己手动实现下对这两个状态的管理，了解了下Glide源码发现他们已经处理过了。
+既然如此，这里就顺便记录下Glide中的管理方式。
+在Glide这个类它实现了ComponentCallbacks2接口（ComponentCallbacks2就是定义了这两个方法）
+然后再Glide创建实例的时候，会绑定这个关系，看代码：
+```
+private static void initializeGlide(
+      @NonNull Context context,
+      @NonNull GlideBuilder builder,
+      @Nullable GeneratedAppGlideModule annotationGeneratedModule) {
+      ...
+      
+      Glide glide = builder.build(applicationContext);
+      
+      ...
+       if (annotationGeneratedModule != null) {
+      annotationGeneratedModule.registerComponents(applicationContext, glide, glide.registry);
+    }
+    applicationContext.registerComponentCallbacks(glide);
+      
+      }
+```
+上面代码在创建Glide实例的时候就顺便往Application中registerComponents了。所以能接收onLowMemory()&onTrimMemory()
+继续追踪源码，在onLowMemory()中是Glide执行了clearMemory()
+而在onTrimMemory()中是分别对memoryCache和bitmapPool执行了处理
+根据level的层次，来决定用clearMemory()还是trimToSize(getMaxSize() / 2);
+
