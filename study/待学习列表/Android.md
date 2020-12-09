@@ -10,6 +10,4 @@
 - **Handler比较全面的一篇：** https://mlxchange.xyz/2020/08/23/看完这篇还不明白Handler你砍我/
 
 
-## java
 
-- **HashMap扩容** https://juejin.im/post/6844903983748743175

@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.interviewstudy.jetpack.LifeCycleTestActivity;
 import com.example.interviewstudy.jni.JniActivity;
 
 import java.util.ArrayList;
@@ -86,6 +87,7 @@ public class MainActivity extends BaseActivity {
         put("trace methed", com.example.interviewstudy.trace.TraceMethedActivity.class);
         put("ConstraintLayout用法", com.example.interviewstudy.view.ConstraintLayoutActivity.class);
         put("jni 调用", JniActivity.class);
+        put("lifeCycle", LifeCycleTestActivity.class);
 //        put("Flutter", FlutterDemoActivity.class);
     }
     private void put(String key,Class clazz){
