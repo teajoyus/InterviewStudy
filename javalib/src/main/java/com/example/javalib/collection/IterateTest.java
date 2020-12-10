@@ -17,7 +17,6 @@ class IterateTest {
             list.add(String.valueOf(i));
         }
         Iterator<String> iterator = list.iterator();
-        while (iterator.)
     }
 
 }
