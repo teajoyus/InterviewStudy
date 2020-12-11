@@ -1,4 +1,4 @@
-package com.example.javalib;
+package com.example.javalib.sort;
 
 import java.util.Random;
 

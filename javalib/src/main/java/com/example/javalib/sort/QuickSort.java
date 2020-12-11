@@ -1,4 +1,4 @@
-package com.example.javalib;
+package com.example.javalib.sort;
 
 /**
  * @Author linmh
