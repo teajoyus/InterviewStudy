@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
-    <file url="file://$PROJECT_DIR$/javalib/src/main/java/com/example/javalib/BubbleSort.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/javalib/src/main/java/com/example/javalib/sort/BubbleSort.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/study/java相关/java线程相关/Thread.txt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/study/java相关/java线程相关/线程池.txt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/study/java相关/java线程相关/自身思考线程顺序执行.txt" charset="UTF-8" />
