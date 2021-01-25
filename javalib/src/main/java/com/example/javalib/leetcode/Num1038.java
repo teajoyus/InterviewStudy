@@ -1,28 +1,23 @@
 package com.example.javalib.leetcode;
 
-import com.example.javalib.tree.BinaryTree;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
-import java.util.Stack;
-
-import javax.sound.midi.Soundbank;
-import javax.swing.event.InternalFrameListener;
 
 /**
- * 请实现一个函数，用来判断一棵二叉树是不是对称的。如果一棵二叉树和它的镜像一样，那么它是对称的。
+ * 给出二叉 搜索 树的根节点，该树的节点值各不相同，请你将其转换为累加树（Greater Sum Tree），使每个节点 node 的新值等于原树中大于或等于 node.val 的值之和。
  * <p>
- * 这题目自己没有解出来
- * 自己的思路本来是搞一个LIst或者stack来表示 但是遇到空节点会有问题 而且空间开销
- * 看网上的答案，其实思路可以改成判断两个节点值是否相等。
- * 只要两个节点相等 并且节点的左右节点与另外一个节点的右左结点相等就OK
- * 这样题目就变成了判断两个节点值是否相等，如果相等就继续递归判断 用节点的左子树与另一个节点的右子树判断
+ * 提醒一下，二叉搜索树满足下列约束条件：
+ * <p>
+ * 节点的左子树仅包含键 小于 节点键的节点。
+ * 节点的右子树仅包含键 大于 节点键的节点。
+ * 左右子树也必须是二叉搜索树。
+ * <p>
+ * 来源：力扣（LeetCode）
+ * 链接：https://leetcode-cn.com/problems/binary-search-tree-to-greater-sum-tree
+ * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class Num28 {
+public class Num1038 {
     public static void main(String[] args) {
-        Num28 num = new Num28();
+        Num1038 num = new Num1038();
 //        TreeNode treeNode1 = num.initTree(new int[]{5, 4, 8, 11, 0, 13, 4, 7, 2, 0, 0, 0, 1});
         TreeNode treeNode1 = num.initTree(new int[]{1, 2, 2, 2, 0, 2});
 //        TreeNode treeNode1 = num.initTree(new int[]{1, 2, 2, 3, 4, 4, 3});
@@ -75,16 +70,27 @@ public class Num28 {
         midOrderTraversal(root.right, list);
     }
 
-    public boolean isSymmetric(TreeNode root) {
-        if (root == null) return true;
-        return isSymmetric(root.left, root.right);
+    private int calcChildNode(TreeNode root) {
+        if (root == null) return 0;
+        int sum = calcChildNode(root.left) + calcChildNode(root.right);
+        return sum + root.val;
+    }
+
+    private int calc(TreeNode root,int flag) {
+        if (root == null) return 0;
+        int right = calc(root.right,1);
+        if(flag==1) {
+            root.val = root.val + right;
+        }else{
+            root.val = root.val + right;
+        }
+        calc(root.left,0);
+//        root.val = sum;
 
     }
 
-    private boolean isSymmetric(TreeNode s, TreeNode t) {
-        if (s != null && t != null) {
-            return s.val == t.val && isSymmetric(s.left, t.right) && isSymmetric(s.right, t.left);
-        } else return s == null && t == null;
+    public TreeNode bstToGst(TreeNode root) {
+
     }
 
     public static class TreeNode {
