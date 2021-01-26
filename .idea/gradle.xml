@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/framework25" />
             <option value="$PROJECT_DIR$/javalib" />
+            <option value="$PROJECT_DIR$/kotlinLib" />
             <option value="$PROJECT_DIR$/module_base" />
             <option value="$PROJECT_DIR$/module_kotlin" />
             <option value="$PROJECT_DIR$/module_recyclerview" />

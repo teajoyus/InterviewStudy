@@ -26,7 +26,7 @@ public class Num1038 {
 //        TreeNode treeNode2 = num.initTree(new int[]{1});
 //        num.print(treeNode1);
 //        num.midOrderTraversal(treeNode1);
-        System.out.println(num.isSymmetric(treeNode1));
+//        System.out.println(num.isSymmetric(treeNode1));
 //        System.out.println(num.isBalanced(treeNode1));
 //        System.out.println(num124.ans);
     }
@@ -70,28 +70,28 @@ public class Num1038 {
         midOrderTraversal(root.right, list);
     }
 
-    private int calcChildNode(TreeNode root) {
-        if (root == null) return 0;
-        int sum = calcChildNode(root.left) + calcChildNode(root.right);
-        return sum + root.val;
-    }
-
-    private int calc(TreeNode root,int flag) {
-        if (root == null) return 0;
-        int right = calc(root.right,1);
-        if(flag==1) {
-            root.val = root.val + right;
-        }else{
-            root.val = root.val + right;
-        }
-        calc(root.left,0);
-//        root.val = sum;
-
-    }
-
-    public TreeNode bstToGst(TreeNode root) {
-
-    }
+//    private int calcChildNode(TreeNode root) {
+//        if (root == null) return 0;
+//        int sum = calcChildNode(root.left) + calcChildNode(root.right);
+//        return sum + root.val;
+//    }
+//
+//    private int calc(TreeNode root, int flag) {
+//        if (root == null) return 0;
+//        int right = calc(root.right, 1);
+//        if (flag == 1) {
+//            root.val = root.val + right;
+//        } else {
+//            root.val = root.val + right;
+//        }
+//        calc(root.left, 0);
+////        root.val = sum;
+//
+//    }
+//
+//    public TreeNode bstToGst(TreeNode root) {
+//
+//    }
 
     public static class TreeNode {
         int val;

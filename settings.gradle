@@ -1,3 +1,4 @@
+include ':kotlinLib'
 include ':app', ':modulea', ':module_kotlin', ':module_base', ':module_recyclerview'
 include':framework25'
 include ':javalib'
