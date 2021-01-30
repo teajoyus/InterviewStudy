@@ -1,0 +1,21 @@
+wait()使当前线程阻塞，前提是 必须先获得锁，一般配合synchronized 关键字使用，即，一般在synchronized 同步代码块里使用 wait()、notify/notifyAll() 方法。
+（理解：没有获得锁，谈何阻塞）
+
+
+
+调用wait方法时需要在synchronized ，也就是要获得锁后才能够让自己释放当前锁，进入阻塞队列
+而调用notify/notifyAll() 也需要在synchronized，要唤醒其他线程首先得知道他们被哪个锁锁了。
+（理解：要唤醒别的线程也得知道别人是被哪个锁锁住了吧）
+
+
+被调用wait方法的线程是被放在阻塞队列中的，正常竞争但没拿到CPU资源的才是放在准备队列中，调用notify后就是把阻塞的队列放到准备队列去
+
+
+
+当线程执行wait()方法时候，会释放当前的锁，然后让出CPU，进入等待状态。
+只有当 notify/notifyAll() 被执行时候，才会唤醒一个或多个正处于等待状态的线程，然后继续往下执行，直到执行完synchronized 代码块的代码或是中途遇到wait() ，再次释放锁。
+
+
+
+
+线程的interrupt()并不会直接中断线程，需要自己判断中断标志Thread.interrupted（）主动结束

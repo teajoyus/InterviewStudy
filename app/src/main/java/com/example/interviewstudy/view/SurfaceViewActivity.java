@@ -6,8 +6,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+ import androidx.annotation.Nullable;
+
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;

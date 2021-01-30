@@ -48,7 +48,7 @@ google为我们提供了这么多个这种xxx to yyy of 的格式，
 
 代码如下：
 ```
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -77,7 +77,7 @@ google为我们提供了这么多个这种xxx to yyy of 的格式，
         android:text="B"
         android:textSize="50sp"
         />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 ```
 运行结果如图：
 
@@ -118,7 +118,7 @@ app:layout_constraintLeft_toLeftOf="parent"
 
 比如有以下代码：
 ```
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -146,7 +146,7 @@ app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintLeft_toLeftOf="@+id/btn2"
         app:layout_constraintTop_toBottomOf="@id/btn1"
         />
-   </android.support.constraint.ConstraintLayout>
+   </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
 结果：
@@ -227,7 +227,7 @@ google提供了另外一套方案：
 
 比如以下代码，让Button B位于Button A的45度角，并且距离Button A中心点为150dp
 ```
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -256,7 +256,7 @@ google提供了另外一套方案：
         app:layout_constraintCircleAngle="45"
         app:layout_constraintCircleRadius="150dp"
       ></Button>
-      </android.support.constraint.ConstraintLayout>
+      </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
 效果：
@@ -488,7 +488,7 @@ layout_constraintGuide_begin和 layout_constraintGuide_end则是参考线距离�
 
 举个例子，我们的定义一条垂直居中的参考线，再定义一个Button A贴在这条参考线的下方：
 ```
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -514,7 +514,7 @@ layout_constraintGuide_begin和 layout_constraintGuide_end则是参考线距离�
         android:textSize="50sp"
         app:layout_constraintTop_toBottomOf="@+id/guideline1"
        />
-       </android.support.constraint.ConstraintLayout>
+       </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
 效果截图：
@@ -535,7 +535,7 @@ Group有两个重要属性：
 比如同时控制Button A 和 B 为GONE状态。（当然，这里只是举例了XML，但一般是写在代码里）
 
 ```
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -572,7 +572,7 @@ Group有两个重要属性：
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn1" />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
 上面这样就什么也没看到了，因为Button A 和B被同时隐藏了。
@@ -599,7 +599,7 @@ Placeholder有一个重要属性：
     android:layout_height="match_parent"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp"
-    tools:parentTag="android.support.constraint.ConstraintLayout">
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
     <android.support.constraint.Placeholder
         android:id="@+id/template_top"
@@ -624,12 +624,12 @@ Placeholder有一个重要属性：
 </merge>
 ```
 
-(注：我们用一个merge标签来避免模版布局带来的冗余嵌套，利用tools:parentTag="android.support.constraint.ConstraintLayout"使之按照ConstraintLayout的约束规则来处理)
+(注：我们用一个merge标签来避免模版布局带来的冗余嵌套，利用tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout"使之按照ConstraintLayout的约束规则来处理)
 
 其后，我们有了模版布局之后，假如我们想把这两个模版布局替换成两个ImageView，则可以这么做：
 ```
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -647,7 +647,7 @@ Placeholder有一个重要属性：
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
         />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
 效果截图：
@@ -680,7 +680,7 @@ Barrier有两个重要属性：
 代码如下：
 ```
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -711,7 +711,7 @@ Barrier有两个重要属性：
         android:textSize="24sp"
         app:layout_constraintLeft_toRightOf="@+id/tv1"
         />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
 效果图大致是这样：
@@ -727,7 +727,7 @@ Barrier有两个重要属性：
 而tv3可以设置这个Barrier为锚点，约束在它的右边。 代码如下：
 ```
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -764,7 +764,7 @@ Barrier有两个重要属性：
         android:text="this is content this is content this is content this is content this is content this is content"
         android:textSize="24sp"
         app:layout_constraintLeft_toRightOf="@+id/barrier" />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
 效果图如下：

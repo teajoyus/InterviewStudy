@@ -49,7 +49,6 @@ dependencies {
     implementation rootProject.ext.dependencies.design
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    //    implementation rootProject.ext.dependencies.recyclerview
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'io.reactivex.rxjava2:rxjava:' + rootProject.ext.dependencies.rxjava
     implementation 'io.reactivex.rxjava2:rxandroid:' + rootProject.ext.dependencies.rxandroid
@@ -62,15 +61,19 @@ dependencies {
     } else {
     }
     //导入flutter
-//    implementation project(':flutter')
-    implementation project(':flutter')
-
+//    if (!rootProject.ext.isFlutterApplication) {
+//        implementation project(":flutter")
+//    }
+//    if (!rootProject.ext.isFlutterApplication) {
+//        implementation project(':flutterstudy')
+//    }
     //引用base组件
     implementation project(':module_base')
     implementation project(':module_kotlin')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+    //noinspection GradleDependency
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:'+rootProject.ext.dependencies.kotlin_version
+    implementation 'com.squareup.okhttp3:okhttp:3.12.12'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
 }

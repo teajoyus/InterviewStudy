@@ -3,7 +3,7 @@ package com.example.interviewstudy.hook;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.ComponentName;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 
 import com.example.interviewstudy.BaseActivity;

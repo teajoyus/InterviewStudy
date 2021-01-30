@@ -1,0 +1,227 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 32744 bytes for ChunkPool::allocate
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Zero Based Compressed Oops mode in which the Java heap is
+#     placed in the first 32GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 32GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:272), pid=15848, tid=0x00000000000044a8
+#
+# JRE version: OpenJDK Runtime Environment (8.0_242-b01) (build 1.8.0_242-release-1644-b01)
+# Java VM: OpenJDK 64-Bit Server VM (25.242-b01 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000001c05b000):  JavaThread "C1 CompilerThread2" daemon [_thread_in_native, id=17576, stack(0x000000001e220000,0x000000001e320000)]
+
+Stack: [0x000000001e220000,0x000000001e320000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+Current CompileTask:
+C1:   7048  839   !   3       sun.nio.ch.WindowsSelectorImpl$SubSelector::processFDSet (374 bytes)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x000000001ed1d800 JavaThread "Forward input" [_thread_blocked, id=14468, stack(0x00000000201f0000,0x00000000202f0000)]
+  0x000000001ed18800 JavaThread "DisconnectableInputStream source reader" daemon [_thread_in_native, id=20980, stack(0x00000000200f0000,0x00000000201f0000)]
+  0x000000001ecfc800 JavaThread "pool-1-thread-1" [_thread_blocked, id=21748, stack(0x000000001fcf0000,0x000000001fdf0000)]
+  0x000000001dadb800 JavaThread "Service Thread" daemon [_thread_blocked, id=8872, stack(0x000000001e320000,0x000000001e420000)]
+=>0x000000001c05b000 JavaThread "C1 CompilerThread2" daemon [_thread_in_native, id=17576, stack(0x000000001e220000,0x000000001e320000)]
+  0x000000001c05a000 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=9292, stack(0x000000001e120000,0x000000001e220000)]
+  0x000000001c055800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=14960, stack(0x000000001e020000,0x000000001e120000)]
+  0x000000001c052800 JavaThread "Attach Listener" daemon [_thread_blocked, id=6148, stack(0x000000001df20000,0x000000001e020000)]
+  0x000000001da72800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=6664, stack(0x000000001de20000,0x000000001df20000)]
+  0x0000000002788000 JavaThread "Finalizer" daemon [_thread_blocked, id=7584, stack(0x000000001d8c0000,0x000000001d9c0000)]
+  0x000000001c02b000 JavaThread "Reference Handler" daemon [_thread_blocked, id=12140, stack(0x000000001d7c0000,0x000000001d8c0000)]
+  0x0000000002692800 JavaThread "main" [_thread_in_native, id=21308, stack(0x0000000002590000,0x0000000002690000)]
+
+Other Threads:
+  0x000000001c008000 VMThread [stack: 0x000000001d6c0000,0x000000001d7c0000] [id=19156]
+  0x000000001dadd800 WatcherThread [stack: 0x000000001e420000,0x000000001e520000] [id=2760]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+heap address: 0x00000006c0a00000, size: 4086 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x00000007c0000000
+
+Heap:
+ PSYoungGen      total 76288K, used 41956K [0x000000076ae00000, 0x0000000770300000, 0x00000007c0000000)
+  eden space 65536K, 64% used [0x000000076ae00000,0x000000076d6f9260,0x000000076ee00000)
+  from space 10752K, 0% used [0x000000076f880000,0x000000076f880000,0x0000000770300000)
+  to   space 10752K, 0% used [0x000000076ee00000,0x000000076ee00000,0x000000076f880000)
+ ParOldGen       total 175104K, used 0K [0x00000006c0a00000, 0x00000006cb500000, 0x000000076ae00000)
+  object space 175104K, 0% used [0x00000006c0a00000,0x00000006c0a00000,0x00000006cb500000)
+ Metaspace       used 10475K, capacity 10788K, committed 11008K, reserved 1058816K
+  class space    used 1373K, capacity 1467K, committed 1536K, reserved 1048576K
+
+Card table byte_map: [0x0000000011b50000,0x0000000012350000] byte_map_base: 0x000000000e54b000
+
+Marking Bits: (ParMarkBitMap*) 0x00000000716af030
+ Begin Bits: [0x0000000012eb0000, 0x0000000016e88000)
+ End Bits:   [0x0000000016e88000, 0x000000001ae60000)
+
+Polling page: 0x0000000000820000
+
+CodeCache: size=245760Kb used=3136Kb max_used=3136Kb free=242623Kb
+ bounds [0x0000000002790000, 0x0000000002ab0000, 0x0000000011790000]
+ total_blobs=1198 nmethods=838 adapters=274
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 4.659 Thread 0x000000001c05b000 nmethod 834 0x0000000002a9ed50 code [0x0000000002a9ef20, 0x0000000002a9f888]
+Event: 6.458 Thread 0x000000001c05b000  835       3       java.util.concurrent.locks.AbstractQueuedSynchronizer::setState (6 bytes)
+Event: 6.458 Thread 0x000000001c05b000 nmethod 835 0x0000000002a9fb50 code [0x0000000002a9fca0, 0x0000000002a9fdf0]
+Event: 6.567 Thread 0x000000001c05b000  836       3       java.util.concurrent.locks.AbstractQueuedSynchronizer::compareAndSetState (13 bytes)
+Event: 6.567 Thread 0x000000001c05b000 nmethod 836 0x0000000002a9fe50 code [0x0000000002a9ffa0, 0x0000000002aa0110]
+Event: 6.567 Thread 0x000000001c05b000  837       3       java.util.concurrent.locks.AbstractQueuedSynchronizer::release (33 bytes)
+Event: 6.567 Thread 0x000000001c05b000 nmethod 837 0x0000000002aa0190 code [0x0000000002aa0300, 0x0000000002aa0618]
+Event: 6.959 Thread 0x000000001c05b000  838       3       java.util.concurrent.ThreadPoolExecutor::runStateOf (5 bytes)
+Event: 6.959 Thread 0x000000001c05b000 nmethod 838 0x0000000002aa0710 code [0x0000000002aa0860, 0x0000000002aa0990]
+Event: 7.046 Thread 0x000000001c05b000  839   !   3       sun.nio.ch.WindowsSelectorImpl$SubSelector::processFDSet (374 bytes)
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (5 events):
+Event: 0.553 Thread 0x0000000002692800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002928ec8 method=java.util.regex.Matcher.reset()Ljava/util/regex/Matcher; @ 47
+Event: 0.622 Thread 0x0000000002692800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000299e8bc method=sun.misc.MetaIndex.mayContain(Ljava/lang/String;)Z @ 38
+Event: 0.727 Thread 0x0000000002692800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002a128cc method=java.util.HashMap.hash(Ljava/lang/Object;)I @ 1
+Event: 0.802 Thread 0x0000000002692800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000029fa604 method=java.util.HashMap.getNode(ILjava/lang/Object;)Ljava/util/HashMap$Node; @ 129
+Event: 0.802 Thread 0x0000000002692800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x0000000002a0d304 method=java.util.HashMap.putVal(ILjava/lang/Object;Ljava/lang/Object;ZZ)Ljava/lang/Object; @ 203
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 0.727 Thread 0x0000000002692800 Implicit null exception at 0x0000000002a12695 to 0x0000000002a128bd
+Event: 0.733 Thread 0x0000000002692800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076cb69958) thrown at [C:\src\AOSP-openjdk-git\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+Event: 0.733 Thread 0x0000000002692800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076cb6dd48) thrown at [C:\src\AOSP-openjdk-git\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+Event: 0.738 Thread 0x0000000002692800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076cbd0168) thrown at [C:\src\AOSP-openjdk-git\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+Event: 0.738 Thread 0x0000000002692800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076cbd1238) thrown at [C:\src\AOSP-openjdk-git\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+Event: 0.738 Thread 0x0000000002692800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076cbd3988) thrown at [C:\src\AOSP-openjdk-git\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+Event: 0.738 Thread 0x0000000002692800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076cbd5050) thrown at [C:\src\AOSP-openjdk-git\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+Event: 0.739 Thread 0x0000000002692800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000076cbd8658) thrown at [C:\src\AOSP-openjdk-git\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+Event: 0.771 Thread 0x0000000002692800 Exception <a 'java/lang/NoSuchFieldError': method resolution failed> (0x000000076cda5a08) thrown at [C:\src\AOSP-openjdk-git\hotspot\src\share\vm\prims\methodHandles.cpp, line 1167]
+Event: 0.772 Thread 0x0000000002692800 Exception <a 'java/lang/NoSuchFieldError': method resolution failed> (0x000000076cdb34c8) thrown at [C:\src\AOSP-openjdk-git\hotspot\src\share\vm\prims\methodHandles.cpp, line 1167]
+
+Events (10 events):
+Event: 1.507 loading class sun/reflect/ClassDefiner$1
+Event: 1.507 loading class sun/reflect/ClassDefiner$1 done
+Event: 4.136 Executing VM operation: EnableBiasedLocking
+Event: 4.137 Executing VM operation: EnableBiasedLocking done
+Event: 7.035 loading class java/lang/Class$4
+Event: 7.036 loading class java/lang/Class$4 done
+Event: 7.036 loading class org/gradle/internal/logging/events/StyledTextOutputEvent$Span
+Event: 7.036 loading class org/gradle/internal/logging/events/StyledTextOutputEvent$Span done
+Event: 7.036 loading class org/gradle/internal/logging/events/operations/StyledTextBuildOperationProgressDetails$Span
+Event: 7.036 loading class org/gradle/internal/logging/events/operations/StyledTextBuildOperationProgressDetails$Span done
+
+
+Dynamic libraries:
+0x00007ff770590000 - 0x00007ff7705c1000 	D:\Program Files\Android\Android Studio\jre\bin\java.exe
+0x00007ffa2ebe0000 - 0x00007ffa2edd0000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffa2dd70000 - 0x00007ffa2de22000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffa2bb90000 - 0x00007ffa2be34000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffa2d8f0000 - 0x00007ffa2d993000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffa2d820000 - 0x00007ffa2d8be000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffa2de30000 - 0x00007ffa2dec7000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffa2e470000 - 0x00007ffa2e590000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ffa2e590000 - 0x00007ffa2e724000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffa2be40000 - 0x00007ffa2be61000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffa2e080000 - 0x00007ffa2e0a6000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffa2c7a0000 - 0x00007ffa2c936000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffa2ca60000 - 0x00007ffa2cafe000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ffa2c960000 - 0x00007ffa2ca5a000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffa1c940000 - 0x00007ffa1cbc4000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.18362.959_none_e6c7bbbf130c62bb\COMCTL32.dll
+0x00007ffa2e130000 - 0x00007ffa2e465000 	C:\WINDOWS\System32\combase.dll
+0x00007ffa2cc10000 - 0x00007ffa2cc90000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ffa2d8c0000 - 0x00007ffa2d8ee000 	C:\WINDOWS\System32\IMM32.DLL
+0x0000000070d20000 - 0x0000000070df2000 	D:\Program Files\Android\Android Studio\jre\jre\bin\msvcr100.dll
+0x0000000070ee0000 - 0x000000007172b000 	D:\Program Files\Android\Android Studio\jre\jre\bin\server\jvm.dll
+0x00007ffa2dce0000 - 0x00007ffa2dce8000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ffa1b880000 - 0x00007ffa1b889000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ffa2ded0000 - 0x00007ffa2df3f000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffa28190000 - 0x00007ffa2819a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffa29d00000 - 0x00007ffa29d24000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffa29650000 - 0x00007ffa2967d000 	C:\WINDOWS\SYSTEM32\WINMMBASE.dll
+0x00007ffa2be70000 - 0x00007ffa2beba000 	C:\WINDOWS\System32\cfgmgr32.dll
+0x00007ffa18ab0000 - 0x00007ffa18abf000 	D:\Program Files\Android\Android Studio\jre\jre\bin\verify.dll
+0x00007ffa08690000 - 0x00007ffa086b9000 	D:\Program Files\Android\Android Studio\jre\jre\bin\java.dll
+0x00007ffa18a90000 - 0x00007ffa18aa6000 	D:\Program Files\Android\Android Studio\jre\jre\bin\zip.dll
+0x00007ffa2d130000 - 0x00007ffa2d816000 	C:\WINDOWS\System32\SHELL32.dll
+0x00007ffa2d9a0000 - 0x00007ffa2da49000 	C:\WINDOWS\System32\shcore.dll
+0x00007ffa2c010000 - 0x00007ffa2c792000 	C:\WINDOWS\System32\windows.storage.dll
+0x00007ffa2baa0000 - 0x00007ffa2bac3000 	C:\WINDOWS\System32\profapi.dll
+0x00007ffa2bad0000 - 0x00007ffa2bb1a000 	C:\WINDOWS\System32\powrprof.dll
+0x00007ffa2ba90000 - 0x00007ffa2baa0000 	C:\WINDOWS\System32\UMPDC.dll
+0x00007ffa2d0d0000 - 0x00007ffa2d122000 	C:\WINDOWS\System32\shlwapi.dll
+0x00007ffa2bb20000 - 0x00007ffa2bb31000 	C:\WINDOWS\System32\kernel.appcore.dll
+0x00007ffa2c940000 - 0x00007ffa2c957000 	C:\WINDOWS\System32\cryptsp.dll
+0x00007ffa08670000 - 0x00007ffa0868a000 	D:\Program Files\Android\Android Studio\jre\jre\bin\net.dll
+0x00007ffa2b2a0000 - 0x00007ffa2b307000 	C:\WINDOWS\system32\mswsock.dll
+0x00007ffa08650000 - 0x00007ffa08663000 	D:\Program Files\Android\Android Studio\jre\jre\bin\nio.dll
+0x00007ffa15350000 - 0x00007ffa15376000 	C:\Users\Administrator\.gradle\native\30\windows-amd64\native-platform.dll
+0x00007ffa08640000 - 0x00007ffa0864d000 	D:\Program Files\Android\Android Studio\jre\jre\bin\management.dll
+0x00007ffa2ae10000 - 0x00007ffa2ae43000 	C:\WINDOWS\system32\rsaenh.dll
+0x00007ffa2bb60000 - 0x00007ffa2bb86000 	C:\WINDOWS\System32\bcrypt.dll
+0x00007ffa2b9b0000 - 0x00007ffa2b9d5000 	C:\WINDOWS\SYSTEM32\USERENV.dll
+0x00007ffa2b470000 - 0x00007ffa2b47c000 	C:\WINDOWS\SYSTEM32\CRYPTBASE.dll
+0x00007ffa2afb0000 - 0x00007ffa2afea000 	C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL
+0x00007ffa2dfc0000 - 0x00007ffa2dfc8000 	C:\WINDOWS\System32\NSI.dll
+0x00007ffa239b0000 - 0x00007ffa239c6000 	C:\WINDOWS\SYSTEM32\dhcpcsvc6.DLL
+0x00007ffa23990000 - 0x00007ffa239ac000 	C:\WINDOWS\SYSTEM32\dhcpcsvc.DLL
+0x00007ffa2aff0000 - 0x00007ffa2b0bb000 	C:\WINDOWS\SYSTEM32\DNSAPI.dll
+
+VM Arguments:
+jvm_args: -Dorg.gradle.appname=gradlew 
+java_command: org.gradle.wrapper.GradleWrapperMain -q -Ptarget-platform=android-arm64 -Ptarget=D:\flutterStudy\recycleflutter\lib\main.dart -Ptrack-widget-creation=true -Pfilesystem-scheme=org-dartlang-root -Pdart-defines=flutter.inspector.structuredErrors=true assembleDebug
+java_class_path (initial): D:\flutterStudy\recycleflutter\android\\gradle\wrapper\gradle-wrapper.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=D:\Program Files\Android\Android Studio\jre
+CLASSPATH=D:\flutterStudy\recycleflutter\android\\gradle\wrapper\gradle-wrapper.jar
+PATH=C:\Program Files\Java\jdk1.8.0_181\bin;C:\Program Files\Java\jdk1.8.0_181\jre\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;D:\Program Files\TortoiseGit\bin;D:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\AndroidSDK\platform-tools;D:\flutter\bin;C:\Users\Administrator\.gradle\wrapper\dists\gradle-5.4.1-all\3221gyojl5jsh0helicew7rwx\gradle-5.4.1\bin;C:\Program Files\TortoiseSVN\bin;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;;C:\Users\Administrator\AppData\Local\Programs\Fiddler;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Microsoft VS Code\bin;D:\flutter\bin\mingit\cmd
+USERNAME=Administrator
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 18362 (10.0.18362.959)
+
+CPU:total 6 (initial active 6) (6 cores per cpu, 1 threads per core) family 6 model 158 stepping 10, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, tsc, tscinvbit, bmi1, bmi2, adx
+
+Memory: 4k page, physical 16728288k(240988k free), swap 34915620k(3780k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.242-b01) for windows-amd64 JRE (1.8.0_242-release-1644-b01), built by "builder" with MS VC++ 10.0 (VS2010)
+
+time: Mon Aug 17 15:44:29 2020
+timezone: 中国标准时间
+elapsed time: 7 seconds (0d 0h 0m 7s)
+

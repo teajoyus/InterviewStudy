@@ -3,8 +3,8 @@ package com.example.interviewstudy.view;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+ import androidx.annotation.Nullable;
+
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import com.example.interviewstudy.BaseActivity;
 import com.example.interviewstudy.R;
 
 /**
@@ -24,7 +25,7 @@ import com.example.interviewstudy.R;
  * Time: 2019\1\25 0025.11:38
  * Description:This is SlideViewActivity
  */
-public class LinearMeasureActivity extends AppCompatActivity {
+public class LinearMeasureActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         Log.i("2222222222222","onCreate "+this);

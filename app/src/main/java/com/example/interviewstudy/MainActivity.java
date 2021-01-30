@@ -4,11 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -16,7 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.interviewstudy.flutter.FlutterDemoActivity;
+import androidx.annotation.NonNull;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.interviewstudy.jetpack.LifeCycleTestActivity;
 import com.example.interviewstudy.jni.JniActivity;
 
 import java.util.ArrayList;
@@ -35,6 +37,9 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getLifecycle().addObserver(new LifecycleObserver() {
+
+        });
         for (int i = 0; i < 2; i++) {
             int k = getInt();
             Context context = getBaseContext();
@@ -82,7 +87,8 @@ public class MainActivity extends BaseActivity {
         put("trace methed", com.example.interviewstudy.trace.TraceMethedActivity.class);
         put("ConstraintLayout用法", com.example.interviewstudy.view.ConstraintLayoutActivity.class);
         put("jni 调用", JniActivity.class);
-        put("Flutter", FlutterDemoActivity.class);
+        put("lifeCycle", LifeCycleTestActivity.class);
+//        put("Flutter", FlutterDemoActivity.class);
     }
     private void put(String key,Class clazz){
         title.add(key);

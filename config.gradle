@@ -1,24 +1,27 @@
 ext{
     //切换modulea工程是apk还是lib
     isApplication=false
+    isFlutterApplication = false
     android=[
-            compileSdkVersion:28,
+            compileSdkVersion:29,
             minSdkVersion:16,
-            targetSdkVersion:28,
+            targetSdkVersion:29,
             versionCode :1,
             versionName :"1.0",
             applicationId:"com.example.interviewstudy",
 
     ]
+    //androidX迁移：https://www.jianshu.com/p/4844cd2568c5
     dependencies=[
-            supportV7:'com.android.support:appcompat-v7:28.+',
-            constraintLayout:'com.android.support.constraint:constraint-layout:1.1.3',
-            recyclerview: 'com.android.support:recyclerview-v7:28.0.0',
-            design: 'com.android.support:design:28.0.0',
-            annotations: 'com.android.support:support-annotations:28.0.0',
+            supportV7:'androidx.appcompat:appcompat:1.1.0',
+            constraintLayout:'androidx.constraintlayout:constraintlayout:1.1.2',
+            recyclerview: 'androidx.recyclerview:recyclerview:1.0.0',
+            design: 'com.google.android.material:material:1.0.0',
+            annotations: 'androidx.annotation:annotation:1.0.0',
             rxjava:'2.2.6',
             rxandroid:'2.1.0',
             activityrouter:'1.2.2',
             annotationActivityrouter:'1.1.7',
+            kotlin_version:'1.3.72',
     ]
 }

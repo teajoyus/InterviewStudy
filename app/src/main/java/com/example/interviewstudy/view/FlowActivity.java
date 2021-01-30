@@ -5,7 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;

@@ -1,22 +1,22 @@
-����������
-builder����������ʱ��Ҫ���ݺܶ��������������ôд̫������췽���Ļ�һ���治������չ һ�����Եô���̫��׸���������õĲ���˳����ܻ�Ӱ�����Ļ�Ҳ����Ū
-��builder�Ļ����Խ���������ݰ��շ������õķ�ʽ���ý�����Ȼ���ٶ�Ӧ�������Ǹ�����
-������AlterDialog
+单例、工厂
+builder：创建对象时需要传递很多参数来构建，那么写太多个构造方法的话一方面不利于拓展 一方面显得代码太累赘，而且设置的参数顺序可能会影响结果的话也不好弄
+用builder的话可以将构造的数据按照方法调用的方式设置进来，然后再对应创建出那个对象
+场景，AlterDialog
 
-�������ģʽ��������һϵ�еĲ��ԣ������ǵ�����װ���������벻ͬ�Ĳ��Զ����ֲ�ͬ�Ĳ��Խ��
-�����ֵ��LinearInterpolator�����Զ������߹������Ǹ���ֵ����������
+策略设计模式：可能有一系列的策略，把他们单独封装起来，传入不同的策略而体现不同的策略结果
+比如插值器LinearInterpolator，属性动画或者滚动条那个插值器就是这种
 
-���������ģʽ���ַ�
-����Ƚϳ����ˣ�����view��dispatchOnTouchEvent�������ϼ���viewgroupһֱ�ַ���ȥ��֪��˭���������¼�������true��������û�������¼��ַ���������������
+责任链设计模式：分发
+这个比较常见了，比如view的dispatchOnTouchEvent啊，由上级的viewgroup一直分发下去，知道谁处理完了事件返回了true，或者是没处理完事件又返回来给自身处理
 
-�۲���ģʽ������-���ģ� ��EventBus��� ��Otto��RxJava��
-�õ�Ҳ�ر�࣬��BaseAdapter���浱���ݸ��µ�ʱ��֪ͨ������µĹ���
+观察者模式：发布-订阅， 像EventBus框架 、Otto、RxJava啊
+用得也特别多，在BaseAdapter里面当数据更新的时候通知界面更新的过程
 
-����ģʽ
-��Binder�������кö��Proxy�������󣬱�������Binder����ͨѶ�����ڽ���֮������ܹ��������Զ���û�취�໥���ô��ݣ�Android�ṩ��һϵ�е�Proxy��������ʹ�����ǿ������ô���������ͨѶ
+代理模式
+在Binder机制中有好多个Proxy代理对象，比如利用Binder进程通讯，由于进程之间对象不能共享，所以对象没办法相互调用传递，Android提供了一系列的Proxy代理对象，使得我们可以利用代理对象来通讯
 
-������ģʽ����һ����Ľӿڱ任����һ�ֽӿڣ�
-����Listview��Adapter����Adapter��getView�����view��Listview�������ǿ��Զ����Լ�����Ҫ���б���
+适配器模式：把一个类的接口变换成另一种接口，
+比如Listview的Adapter，用Adapter的getView来填充view到Listview，让我们可以订做自己的想要的列表。
 
-װ����ģʽ���о�������ǿԭ�ȶ���Ĺ���
-����Context����ContextWrapper��װ�κ��Activityȥ�̳�
+装饰着模式：感觉就是增强原先对象的功能
+比如Context，用ContextWrapper来装饰后给Activity去继承

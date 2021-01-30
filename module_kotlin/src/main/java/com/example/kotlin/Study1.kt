@@ -120,7 +120,7 @@ fun printCheckRange() {
     }
     println("")
     println("\n使用$s..$e 输出1到10,用until：")
-    for (x in s until e){
+    for (x in s until e) {
         print("$x\t")
     }
     println("")
@@ -142,6 +142,7 @@ fun printFilterList() {
 interface RectangleProperties {
     //接口可以定义常量，由实现类来赋值这个常量
     val isSquare: Boolean
+
     //不能去初始化
 //    val demo:String = "I am a Interface"
     //常量要这么写
@@ -159,9 +160,9 @@ abstract class Shape(val sides: List<Double>) {
  */
 class Rectangle(
         val height: Double,
-        val length:Double
-):Shape(listOf(height,length,height,length)),RectangleProperties{
-    override val isSquare: Boolean get() = length==height
+        val length: Double
+) : Shape(listOf(height, length, height, length)), RectangleProperties {
+    override val isSquare: Boolean get() = length == height
     override fun calcArea(): Double {
         return length * height
     }
@@ -171,9 +172,10 @@ class Rectangle(
 
 //===============================
 //扩展函数
-fun String.myDemo(){
+fun String.myDemo() {
     println("我是String类的扩展方法")
 }
+
 fun main(array: Array<String>) {
     println("a + b = " + sum2(2, 3))
     printSum(a, b)
@@ -193,10 +195,176 @@ fun main(array: Array<String>) {
     println("printWhen(str):${printWhen("str")}")
     printCheckRange()
     printFilterList()
-    var rectangle:Rectangle = Rectangle(4.0,5.0)
-    println("rectangle demo:"+rectangle.demo)
-    println("rectangle isSquare:"+rectangle.isSquare)
-    println("rectangle calc area:"+rectangle.calcArea())
+    var rectangle: Rectangle = Rectangle(4.0, 5.0)
+    println("rectangle demo:" + rectangle.demo)
+    println("rectangle isSquare:" + rectangle.isSquare)
+    println("rectangle calc area:" + rectangle.calcArea())
     var v = "扩展"
     v.myDemo()
+
+    var numbers = listOf("one", "two", "three", "three","four","five")
+    //list 转 map
+    println(numbers.associateWith { it.length })
+    //可以定义key和生成规则和value的生成规则
+    println(
+            numbers.associateBy(keySelector ={
+                it.first().toUpperCase()
+            } ,valueTransform = {
+                it.length
+            })
+
+    )
+    //可以定义key和生成规则和value的生成规则
+    println(
+            numbers.associate {
+                    it to it.first()
+            }
+    )
+
+    val numberSets = listOf(setOf(1, 2, 3), setOf(4, 5, 6), setOf(1, 2))
+    println(numberSets.flatten())
+
+    val containers = listOf(listOf("one", "two", "three"),listOf("four", "five", "six"),listOf("seven", "eight"))
+    val containers2 = containers.flatMap {
+        it
+    }
+    val containers3 = numberSets.flatMap {
+        it
+    }
+    println("containers2$containers2")
+    println("containers3$containers3")
+
+
+     numbers = listOf("one", "two", "three", "four")
+    println(numbers)
+    println(numbers.joinToString())
+    val listString = StringBuffer("The list of numbers: ")
+    numbers.joinTo(listString)
+    println(listString)
+    println(numbers.joinToString(separator = " | ", prefix = "start: ", postfix = ": end"))
+    println(numbers.joinToString(separator = ""))
+
+
+    val intNumbers = (1..100).toList()
+    println(intNumbers.joinToString(limit = 10, truncated = "<...>",transform = {entry ->
+        (entry*1000).toString()
+    }))
+
+    val list = listOf(null, 1, "two", 3.0, "four")
+    println("All String elements in upper case:")
+    list.filterIsInstance<String>().forEach {
+        println(it.toUpperCase())
+    }
+
+    numbers = listOf("one", "two", "three", "four")
+    val (match, rest) = numbers.partition { it.length > 3 }
+    println(match)
+    println(rest)
+
+
+    numbers = listOf("one", "two", "three", "four", "five")
+    println(numbers.groupBy { it.first().toUpperCase() })
+    println(numbers.groupBy(keySelector = { it.first() }, valueTransform = { it.toUpperCase()
+    }))
+
+    numbers = listOf("one", "two", "three", "four", "five", "six")
+    println(numbers.groupingBy { it.first() }.eachCount())
+
+    numbers = listOf("one", "two", "three", "four", "five", "six")
+    println(numbers.slice(1..3))
+    println(numbers.slice(0..4 step 2))
+    println(numbers.slice(setOf(3, 5, 0)))
+
+    println("take and drop")
+    numbers = listOf("one", "two", "three", "four", "five", "six")
+    println(numbers.take(3))
+    println(numbers.takeLast(3))
+    println(numbers.drop(1))
+    println(numbers.dropLast(5))
+
+    println("takeWhile and dropWhile")
+    numbers = listOf("one", "two", "three", "four", "five", "six","seven")
+    println(numbers.takeWhile { !it.startsWith('f') })
+    println(numbers.takeLastWhile { it != "three" })
+    println(numbers.dropWhile { it.length == 3 })
+    println(numbers.dropLastWhile { it.contains('i') })
+
+    println("chunkeds")
+    val chunkeds = (0..13).toList()
+    println(chunkeds.chunked(3) { it }) // `it` 为原始集合的⼀个块
+    println("windowed")
+    println(numbers.windowed(3))
+    println(numbers.windowed(size = 3,step = 2,partialWindows = false))
+    println(numbers.windowed(size = 3,step = 2,partialWindows = true))
+
+    println("zipWithNext")
+    println(numbers.zipWithNext() { s1, s2 -> s1.length > s2.length})
+
+    println("elementAtOrNull() ")
+    println(numbers.elementAtOrNull(5))
+    println(numbers.elementAtOrNull(15))
+
+    println("find() ")
+    println(numbers.find {
+        it.startsWith("t")
+    })
+    println(numbers.findLast {
+        it.startsWith("t")
+    })
+
+    println("random() ")
+    println(numbers.random())
+
+    println("sort() ")
+    println(numbers.sortedBy {
+        it.length
+    })
+    println(numbers.sortedByDescending {
+        it.length
+    })
+    println("sortedWith() ")
+    numbers = listOf("one", "two", "three", "four")
+    println(numbers.sortedWith(compareBy {
+        if(it.length>2){
+            it.first()
+        }else{
+            it.first()
+        }
+    }))
+    println("Sorted by length ascending: ${numbers.sortedWith(compareBy { it.length })}")
+
+    println("reversed() ")
+    println(numbers.reversed())
+    var numberss = (1..10).toMutableList()
+    val asReversedNumberss = numberss.asReversed()
+    val reversedNumberss = numberss.reversed()
+    println(asReversedNumberss)
+    numberss.add(11)
+    println(reversedNumberss)
+    println(asReversedNumberss)
+    println("reduce and fold ")
+//    val numbersReduce = listOf(5, 2, 10, 4)
+//    val sum = numbersReduce.reduce { sum, element -> sum + element }
+//    println(sum)
+//    val sumDoubled = numbersReduce.fold(100) { sum, element -> sum + element * 2 }
+//    println(sumDoubled)
+   println( numbers.reduce { acc, s ->
+       println(acc)
+       println(s)
+       acc+s
+   })
+   println( numbers.fold("i am fold:") { acc, s ->
+       println(acc)
+       println(s)
+       acc+s
+   })
+   println( numbers.foldIndexed("i am fold2:") { index,acc, s ->
+       println(index)
+       println(acc)
+       println(s)
+       acc+s
+   })
+    println((numbers union  numberss))
+
+
 }

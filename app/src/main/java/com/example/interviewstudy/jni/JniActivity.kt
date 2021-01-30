@@ -1,11 +1,10 @@
 package com.example.interviewstudy.jni
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import com.example.interviewstudy.BaseActivity
 import com.example.interviewstudy.R
 
-class JniActivity : AppCompatActivity() {
+class JniActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
