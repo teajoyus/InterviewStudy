@@ -10,4 +10,9 @@ java {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.1"
+// 此依赖库是 Android 项目才会用到的，纯 Kotlin 程序其实用不到。
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1"
+
 }
