@@ -1,6 +1,7 @@
 package com.example.javalib.leetcode;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -19,7 +20,7 @@ public class Num1022 {
         Num1022 num = new Num1022();
         TreeNode node = num.initTree(new int[]{1, 0, 1, 0, 1, 0, 1});
         int sum = num.sumRootToLeaf(node);
-        System.out.println("sum:"+sum);
+        System.out.println("sum:" + sum);
     }
 
     public TreeNode initTree(int[] array) {
@@ -67,14 +68,32 @@ public class Num1022 {
         }
     }
 
+    List<List<Integer>> res = new LinkedList<>();
+
+    List<List<Integer>> permute(int[] nums) {
+        // 记录「路径」
+        LinkedList<Integer> track = new LinkedList<>();
+        backtrack(nums, track);
+        return res;
+    }
+
+    void backtrack(int[] nums, LinkedList<Integer> track) {
+
+        for (int i = 0; i < nums.length; i++) {
+            track.add(nums[i]);
+            backtrack(nums,track);
+            track.removeLast();
+        }
+    }
 
     public int sumRootToLeaf(TreeNode root) {
         return helper(root, 0);
     }
-    private int helper(TreeNode root, int sum){
-        if(root == null) return 0;
-        sum = 2 *sum + root.val;
-        if(root.left == null && root.right == null){
+
+    private int helper(TreeNode root, int sum) {
+        if (root == null) return 0;
+        sum = 2 * sum + root.val;
+        if (root.left == null && root.right == null) {
             return sum;
         }
         return helper(root.left, sum) + helper(root.right, sum);
