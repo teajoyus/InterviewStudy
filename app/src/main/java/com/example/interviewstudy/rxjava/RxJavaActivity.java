@@ -23,6 +23,7 @@ public class RxJavaActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rx_java);
+
         Retrofit retrofit = new Retrofit.Builder()
                 //设置数据解析器
 //                .addConverterFactory(GsonConverterFactory.create())
