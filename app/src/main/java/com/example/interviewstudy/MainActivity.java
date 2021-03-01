@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 public class MainActivity extends BaseActivity {
     RecyclerView rv;
@@ -37,8 +38,8 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getLifecycle().addObserver(new LifecycleObserver() {
 
+        getLifecycle().addObserver(new LifecycleObserver() {
         });
         for (int i = 0; i < 2; i++) {
             int k = getInt();
