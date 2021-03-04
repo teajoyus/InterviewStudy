@@ -168,7 +168,7 @@ jdk8之后，方法区也就是永久代被元数据区（mataSpace）所取代�
 
 当eden区域满了之后就会进行一次minor GC ，对于一些比较大的对象就直接挪到老年代，而其它存活的对象就放到survivor区。
 
-比如一开始 eden区域gc后存活的对象方刀survivor区域from区域，
+比如一开始 eden区域gc后存活的对象放到survivor区域from区域，
 那么下次再发生minor gc时就把eden区域连同from区域存活的对象都复制到to区域，然后清空这两个的内存。
 有部分对象可能会在survivor两个区域中来回复制多次，当survivor区域中的对象gc次数超过15（对象头markword里存放gc次数），那么就会把对象转入老年代。
 
