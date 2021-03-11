@@ -25,6 +25,7 @@ public class ReentrantLockDemo {
 
 
     public static void test() {
+        System.out.println("test");
         for (int i = 0; i < 2; i++) {
             try {
                 lock.lock();

@@ -19,6 +19,7 @@ public class MyClass {
             }
         }.start();
         CatchDemo.aa();
+
     }
 
     public static class AA {

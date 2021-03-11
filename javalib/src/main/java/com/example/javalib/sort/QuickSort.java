@@ -72,7 +72,7 @@ public class QuickSort {
             //而轮到左指针来的时候，判断了左指针等于右指针了所以没得移动。这个时候再把基数来放在他们这个重叠的位置，就出现问题了。
             //总结就是：因为有序，而一开始就left+1，所以最终重叠的位置也就在left+1，导致基数与这个位置替换就有问题。正常来说两个不应该替换的
 //            for (i = left + 1, j = right; i != j; ) {
-            for (i = left , j = right; i != j; ) {
+            for (i = left, j = right; i != j; ) {
 
                 //找到右边第一个比base小的数字，通过j下标所指.同时要注意右指针一定不能小于左指针，也就是必须j>i
                 while (arr[j] >= base && j > i) {
@@ -116,5 +116,58 @@ public class QuickSort {
             }
         }
         return sb.toString();
+    }
+
+
+    // 2021 03 09
+
+    public static class Fuxi {
+        /**
+         * 重写快速排序
+         * 第一个卡点：第一趟确定基点后，也知道for循环是 i != j;，不知道怎么左右交换，二分为两个子数组
+         * 第二个卡点是：记错了，快排的基数不是说去找mid，而是随便确定一个数作为基数，比如第一个，最后再把这个基数放到中间来切分两个
+         * <p>
+         * 最后一个卡点：在进入递归时的区间可以是[left,i-1]、[i+1,right]，没必要去包含i，因为i已经是基数确定位置了
+         *
+         * @param nums
+         */
+        public void sort(int[] nums) {
+            quickSort(nums, 0, nums.length - 1);
+            for (int i = 0; i < nums.length; i++) {
+                System.out.print(nums[i] + "\t");
+            }
+        }
+
+        public void quickSort(int[] nums, int left, int right) {
+            if (left == right) {
+                return;
+            }
+            int base = nums[left];
+            int i = left, j = right;
+            while (i != j) {
+                //寻找右边第一个小于基数的元素
+                while (nums[j] < base && i < j) {
+                    j--;
+                }
+                //寻找左边第一个大于等于基数的元素
+                while (nums[i] >= base && i < j) {
+                    i++;
+                }
+                if (i < j) {
+                    int t = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = t;
+                }
+            }
+            nums[left] = nums[i];
+            nums[i] = base;
+            if (left < i) {
+                quickSort(nums, left, i);
+            }
+            if (i + 1 < right) {
+                quickSort(nums, i + 1, right);
+            }
+
+        }
     }
 }

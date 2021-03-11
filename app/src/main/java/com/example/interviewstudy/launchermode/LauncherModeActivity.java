@@ -1,5 +1,6 @@
 package com.example.interviewstudy.launchermode;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,7 @@ public class LauncherModeActivity extends BaseActivity {
         tv.setText("我是A");
         log_i("硬件加速" + tv.isHardwareAccelerated());
         Button btn = findViewById(R.id.btn);
+
         btn.setText("跳转到：" + clazz.getSimpleName());
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,7 +1,5 @@
 package com.example.javalib.tree;
 
-import com.example.javalib.leetcode.Num32;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
