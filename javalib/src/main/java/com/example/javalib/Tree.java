@@ -8,6 +8,22 @@ import com.example.javalib.leetcode.dfs.Num1022;
  * description :
  */
 public class Tree {
+    public static TreeNode parse(String line) {
+        if (line.startsWith("[")) {
+            if (line.equals("[]")) {
+                return null;
+            }
+            String str = line.replace("[", "").replace("]", "");
+            String[] arr = str.split(",");
+            int[] nums = new int[arr.length];
+            for (int i = 0; i < nums.length; i++) {
+                nums[i] = Integer.parseInt(arr[i]);
+            }
+            return initTree(nums);
+        }
+        return null;
+    }
+
     public static TreeNode initTree(int[] array) {
         return buildTree(array, 0);
     }

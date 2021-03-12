@@ -1,5 +1,7 @@
 package com.example.javalib.nowcoder;
 
+import com.example.javalib.ListNode;
+
 /**
  * 第二次做题，思考了一会后做出来，问题不大
  * 主要一开始错误的是 没有把翻转指针的next初始化为null
@@ -15,14 +17,6 @@ public class 反转链表二次做题 {
         pritnList(reverse);
     }
 
-    public static class ListNode {
-        int val;
-        ListNode next = null;
-
-        ListNode(int val) {
-            this.val = val;
-        }
-    }
 
     public static void pritnList(ListNode head) {
         while (head != null) {

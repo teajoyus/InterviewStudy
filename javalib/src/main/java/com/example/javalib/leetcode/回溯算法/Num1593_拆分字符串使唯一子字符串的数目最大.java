@@ -1,5 +1,7 @@
 package com.example.javalib.leetcode.回溯算法;
 
+import com.example.javalib.TreeNode;
+
 import java.util.LinkedList;
 
 /**
@@ -138,24 +140,5 @@ public class Num1593_拆分字符串使唯一子字符串的数目最大 {
             printMiddleOrder(root.right);
         }
 
-
-        public static class TreeNode {
-            int val;
-            TreeNode left;
-            TreeNode right;
-
-            TreeNode() {
-            }
-
-            TreeNode(int val) {
-                this.val = val;
-            }
-
-            TreeNode(int val, TreeNode left, TreeNode right) {
-                this.val = val;
-                this.left = left;
-                this.right = right;
-            }
-        }
     }
 }

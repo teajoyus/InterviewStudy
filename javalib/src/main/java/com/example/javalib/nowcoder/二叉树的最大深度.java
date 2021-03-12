@@ -1,5 +1,7 @@
 package com.example.javalib.nowcoder;
 
+import com.example.javalib.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,14 +33,5 @@ public class 二叉树的最大深度 {
         int left=TreeDepth(root.left);
         int right=TreeDepth(root.right);
         return left>right?left+1:right+1;
-    }
-    public static class TreeNode {
-        int val;
-        TreeNode left = null;
-        TreeNode right = null;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
     }
 }

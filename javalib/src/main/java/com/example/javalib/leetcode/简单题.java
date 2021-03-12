@@ -1,5 +1,7 @@
 package com.example.javalib.leetcode;
 
+import com.example.javalib.ListNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,14 +11,6 @@ import java.util.List;
  * description :
  */
 public class 简单题 {
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     public static void main(String[] args) {
         简单题 demo = new 简单题();

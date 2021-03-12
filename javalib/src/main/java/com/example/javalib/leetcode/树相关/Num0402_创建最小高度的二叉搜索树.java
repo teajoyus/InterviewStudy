@@ -1,5 +1,7 @@
 package com.example.javalib.leetcode.树相关;
 
+import com.example.javalib.TreeNode;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -51,23 +53,5 @@ public class Num0402_创建最小高度的二叉搜索树 {
         System.out.println("");
     }
 
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
 }
 
