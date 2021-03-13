@@ -118,3 +118,6 @@ kotlin里有一个Functions.kt的文件，里面定义了Function0、Function1�
 然后生成了这个变量对应的get方法，会从这个lazy里拿到这个变量的实例。（lazy里判断没有实例的时候再创建 所以就是懒加载）
 个人注意：by lazy一定是val类型的，不然要是可以随意赋值的haul，懒加载也没有意义了
 
+# let run apply also
+这些都是放在kotlin的Standard.kt文件里，其实就是一个内联函数，我们自己也可以写.
+区别就是最后是return block(this)还是 block(this);return this

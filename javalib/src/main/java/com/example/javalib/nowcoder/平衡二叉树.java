@@ -1,5 +1,7 @@
 package com.example.javalib.nowcoder;
 
+import com.example.javalib.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,36 +13,29 @@ public class 平衡二叉树 {
     public static void main(String[] args) {
 //        System.out.println(new 平衡二叉树().IsBalanced_Solution(20));
     }
+
     public boolean IsBalanced_Solution(TreeNode root) {
         List<String> flag = new ArrayList<>();
-        TreeDepth(root,flag);
+        TreeDepth(root, flag);
         return flag.isEmpty();
     }
 
     /**
      * 求深度
+     *
      * @param root
      * @return
      */
     public int TreeDepth(TreeNode root, List<String> flag) {
-        if(root==null)
+        if (root == null)
             return 0;
-        int left=TreeDepth(root.left,flag);
-        int right=TreeDepth(root.right,flag);
-        if(Math.abs(left-right)>1){
-            if(flag.isEmpty()){
+        int left = TreeDepth(root.left, flag);
+        int right = TreeDepth(root.right, flag);
+        if (Math.abs(left - right) > 1) {
+            if (flag.isEmpty()) {
                 flag.add("1");
             }
         }
-        return left>right?left+1:right+1;
-    }
-    public static class TreeNode {
-        int val;
-        TreeNode left = null;
-        TreeNode right = null;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
+        return left > right ? left + 1 : right + 1;
     }
 }

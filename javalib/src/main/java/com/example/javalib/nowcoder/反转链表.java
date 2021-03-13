@@ -1,5 +1,7 @@
 package com.example.javalib.nowcoder;
 
+import com.example.javalib.ListNode;
+
 /**
  * 定义一个pre指针，用来指向反转后的链表头
  * 定义一个cur指针，用来表示当前遍历到的节点
@@ -46,14 +48,6 @@ public class 反转链表 {
         pritnList(reverse);
     }
 
-    public static class ListNode {
-        int val;
-        ListNode next = null;
-
-        ListNode(int val) {
-            this.val = val;
-        }
-    }
     public static void pritnList(ListNode head){
         while (head!=null){
             System.out.print(head.val+"\t");
