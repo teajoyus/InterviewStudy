@@ -1,5 +1,6 @@
 https://segmentfault.com/a/1190000012196642 https
 
+
 ## http 各个状态码含义
 2开头一般都是成功处理请求的
 3开头是重定向相关的

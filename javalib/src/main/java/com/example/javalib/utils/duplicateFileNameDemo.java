@@ -1,4 +1,4 @@
-package com.example.javalib;
+package com.example.javalib.utils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ class duplicateFileNameDemo {
                 mb += curMb * (entry.getValue().size() - 1);
             }
         }
-        System.out.println("预计总共节省："+mb+"mb");
+        System.out.println("预计总共节省：" + mb + "mb");
     }
 
     public static void check(String path) {
