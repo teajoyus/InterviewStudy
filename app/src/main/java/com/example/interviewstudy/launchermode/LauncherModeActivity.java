@@ -24,6 +24,9 @@ public class LauncherModeActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launchermode);
+
+
+
         TextView tv = findViewById(R.id.tv);
         tv.setText("我是A");
         log_i("硬件加速" + tv.isHardwareAccelerated());

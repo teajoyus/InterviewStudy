@@ -1,5 +1,6 @@
 package com.example.javalib.leetcode.回溯算法;
 
+
 import com.example.javalib.TreeNode;
 
 import java.util.LinkedList;
@@ -62,16 +63,16 @@ public class Num1593_拆分字符串使唯一子字符串的数目最大 {
     public static class Num897 {
         public static void main(String[] args) {
             Num897 num = new Num897();
-    //        TreeNode treeNode1 = num.initTree(new int[]{5, 4, 8, 11, 0, 13, 4, 7, 2, 0, 0, 0, 1});
-    //        TreeNode treeNode1 = num.initTree(new int[]{1, 2, 2, 3, 0, 0, 3, 4, 0, 0, 4});
+            //        TreeNode treeNode1 = num.initTree(new int[]{5, 4, 8, 11, 0, 13, 4, 7, 2, 0, 0, 0, 1});
+            //        TreeNode treeNode1 = num.initTree(new int[]{1, 2, 2, 3, 0, 0, 3, 4, 0, 0, 4});
             TreeNode treeNode1 = num.initTree(new int[]{5, 3, 6, 2, 4, 0, 8, 1, 0, 0, 0, 7, 9});
-    //        TreeNode treeNode2 = num572.initTree(new int[]{4, 11, 0, 7, 2, 0, 0});
-    //        TreeNode treeNode1 = num.initTree(new int[]{1, 1});
-    //        TreeNode treeNode2 = num.initTree(new int[]{1});
+            //        TreeNode treeNode2 = num572.initTree(new int[]{4, 11, 0, 7, 2, 0, 0});
+            //        TreeNode treeNode1 = num.initTree(new int[]{1, 1});
+            //        TreeNode treeNode2 = num.initTree(new int[]{1});
             TreeNode node = num.increasingBST(treeNode1);
             System.out.println("node:");
             num.printMiddleOrder(node);
-    //        System.out.println(num124.ans);
+            //        System.out.println(num124.ans);
         }
 
         public TreeNode initTree(int[] array) {
@@ -117,9 +118,9 @@ public class Num1593_拆分字符串使唯一子字符串的数目最大 {
 
             node.right = new TreeNode(root.val);
             node = node.right;
-    //        print(newRoot);
+            //        print(newRoot);
             System.out.println("root val:" + root.val);
-    //        System.out.println("root newRoot:"+newRoot);
+            //        System.out.println("root newRoot:"+newRoot);
             middleOrder(root.right);
         }
 

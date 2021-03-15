@@ -1,6 +1,5 @@
 package com.example.javalib;
 
-import com.example.javalib.leetcode.dfs.Num1022;
 
 /**
  * author : linmh
@@ -48,6 +47,14 @@ public class Tree {
         root.left = buildTree(nums, 2 * index + 1);
         root.right = buildTree(nums, 2 * index + 2);
         return root;
+    }
+
+    public static void prePrint(TreeNode root) {
+        if (root != null) {
+            System.out.print(root.val + "\t");
+            prePrint(root.left);
+            prePrint(root.right);
+        }
     }
 
 }
