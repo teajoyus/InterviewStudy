@@ -2,20 +2,21 @@ package com.example.recycleviewdemo;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSnapHelper;
-import android.support.v7.widget.OrientationHelper;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
+import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,7 +48,7 @@ public class MyDefinedActivity extends AppCompatActivity {
 
         //分割线的接口没有实现类 需要自己实现
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,DividerItemDecoration.VERTICAL);
-        if(!(rv.getLayoutManager() instanceof  StaggeredGridLayoutManager)){
+        if(!(rv.getLayoutManager() instanceof StaggeredGridLayoutManager)){
             rv.addItemDecoration(dividerItemDecoration);
         }
         rv.setItemAnimator(new DefaultItemAnimator());
