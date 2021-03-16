@@ -23,11 +23,15 @@ public class ListNode {
     }
 
     public static ListNode parse(String line) {
-        if (line.startsWith("[")) {
-            if (line.equals("[]")) {
+        String[] fuhao = new String[]{"[", "]"};
+        if (line.contains("{")) {
+            fuhao = new String[]{"{", "}"};
+        }
+        if (line.startsWith(fuhao[0])) {
+            if (line.equals(fuhao[0] + fuhao[1])) {
                 return null;
             }
-            String str = line.replace("[", "").replace("]", "");
+            String str = line.replace(fuhao[0], "").replace(fuhao[1], "");
             String[] arr = str.split(",");
             int[] nums = new int[arr.length];
             for (int i = 0; i < nums.length; i++) {
@@ -55,6 +59,11 @@ public class ListNode {
         } else {
             System.out.println("");
         }
+
+    }
+
+    public void print() {
+        print(this);
 
     }
 
