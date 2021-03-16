@@ -1,6 +1,5 @@
-package com.example.javalib.nowcoder;
+package com.example.javalib.高频算法题;
 
-import java.util.List;
 import java.util.Stack;
 
 /**

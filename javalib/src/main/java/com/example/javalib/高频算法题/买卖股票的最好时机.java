@@ -1,6 +1,8 @@
-package com.example.javalib.nowcoder;
+package com.example.javalib.高频算法题;
 
 /**
+ * https://www.nowcoder.com/practice/64b4262d4e6d4f6181cd45446a5821ec
+ *
  * 牛客上是用dp去解题
  *
  * 但是自己不是用dp解题的 而是用自己的算法来做标记
