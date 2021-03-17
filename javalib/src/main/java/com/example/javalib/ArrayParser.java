@@ -14,6 +14,26 @@ public class ArrayParser {
         parseDoubleArray("[[4,3,1],[3,2,4],[3],[4],[]]");
     }
 
+    public static void print(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + "\t");
+        }
+        System.out.println("");
+    }
+
+    public static int[] parseArray(String line) {
+        if ("[]".equals(line)) {
+            return new int[0];
+        }
+        line = line.substring(1, line.lastIndexOf("]"));
+        String[] arrStr = line.split(",");
+        int[] arr = new int[arrStr.length];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = Integer.parseInt(arrStr[i]);
+        }
+        return arr;
+    }
+
     public static int[][] parseDoubleArray(String line) {
         String str = line;
         str = str.substring(1, str.lastIndexOf("]"));

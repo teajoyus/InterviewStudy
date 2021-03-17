@@ -1,4 +1,4 @@
-package com.example.javalib.nowcoder;
+package com.example.javalib.高频算法题;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +11,11 @@ import java.util.Map;
  * 例如：
  * 给出的数组为 {20, 70, 110, 150},目标值为90
  * 输出 index1=1, index2=2
+ *
+ * 1、暴力枚举 O(n2)
+ * 2、借助哈希表（掌握）：把值作为key放入hash表，把索引作为value，
+ * 这样只要下一个数与和的差刚好等于key，那么就代表这两个值就是两数之和了
+ *
  */
 public class 两数之和 {
     public static void main(String[] args) {

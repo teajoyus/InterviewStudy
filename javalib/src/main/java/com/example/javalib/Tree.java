@@ -8,14 +8,21 @@ package com.example.javalib;
  */
 public class Tree {
     public static TreeNode parse(String line) {
-        if (line.startsWith("[")) {
-            if (line.equals("[]")) {
+        String[] fuhao = new String[]{"[", "]"};
+        if (line.contains("{")) {
+            fuhao = new String[]{"{", "}"};
+        }
+        if (line.startsWith(fuhao[0])) {
+            if (line.equals(fuhao[0] + fuhao[1])) {
                 return null;
             }
-            String str = line.replace("[", "").replace("]", "");
+            String str = line.replace(fuhao[0], "").replace(fuhao[1], "");
             String[] arr = str.split(",");
             int[] nums = new int[arr.length];
             for (int i = 0; i < nums.length; i++) {
+                if ("#".equals(arr[i])) {
+                    arr[i] = "0";
+                }
                 nums[i] = Integer.parseInt(arr[i]);
             }
             return initTree(nums);

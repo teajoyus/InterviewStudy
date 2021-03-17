@@ -1,4 +1,4 @@
-package com.example.javalib.nowcoder;
+package com.example.javalib.高频算法题;
 
 /**
  * 这道题目就是自己解出来的
@@ -21,6 +21,12 @@ package com.example.javalib.nowcoder;
  * <p>
  * 而dp[i] = Math.max(dp[i - 1], Math.max(arr[i], dp2[i - 1]));
  * 也就是dp[i]不应该再加上了，而是继续保持dp[i-1],当然也要判断arr[i]是否大于dp[i-1]
+ *
+ *
+ * 第二次看：
+ * 主要是dp状态。
+ * 到第i个，你需要知道到第i个的最大累计和是多少，然后连续和是多少。
+ * 这样就可以用dp来解题
  */
 public class 子数组的最大累加和问题 {
     public static void main(String[] args) {
