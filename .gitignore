@@ -1,6 +1,7 @@
 *.iml
 .gradle
 .idea
+.log
 /local.properties
 /.idea/caches/build_file_checksums.ser
 /.idea/libraries
@@ -13,3 +14,4 @@
 /captures
 .externalNativeBuild
 /framework25
+

@@ -70,9 +70,7 @@ public class ArrayParser {
             for (int j = 0; j < array[i].length; j++) {
                 System.out.print(array[i][j] + "\t");
             }
-            if (i + 1 < array.length) {
                 System.out.println("");
-            }
         }
         System.out.println("====================");
         return array;

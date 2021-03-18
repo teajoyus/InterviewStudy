@@ -12,7 +12,7 @@ public class AAA算法命名常识 {
     public static void main(String[] args) {
         AAA算法命名常识 demo = new AAA算法命名常识();
     }
-
+//    Traversal  遍历 tra ver sal
     //队列
     private void queue() {
         //可以用一个LinkedList来表示队列，它是一个链表结构的双向队列
