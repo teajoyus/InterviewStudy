@@ -2,11 +2,38 @@
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/javalib/src/main/java/com/example/javalib/sort/BubbleSort.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study/Activity之间使用intent传递大量数据的限制.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study/GradientDrawable初步了解.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/HierarchyViewer查看视图层级关系.txt" charset="GBK" />
     <file url="file://$PROJECT_DIR$/study/java相关/java线程相关/Thread用法相关.md" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/study/java相关/java线程相关/线程池相关（后面待完善）.md" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/study/java相关/java线程相关/自身思考线程顺序执行.txt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/study/金山面试整理/设计模式.txt" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/study/金山面试整理/面试整理.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study/优先级队列PriorityQueue.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/四大组件与生命周期/Activity点击Home键，Back()键所走的生命周期.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study/四大组件与生命周期/Activity生命周期注意的地方.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study/知识广度/Canvas的save方法使用.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/知识广度/Canvas的save方法使用.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/知识广度/GPU过度绘制-如何优化.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study/知识广度/String的intern方法.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/知识广度/String的intern方法.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/知识广度/View深度.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/知识广度/View深度.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/知识广度/compareable 和 compartor的区别.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study/知识广度/为什么Dialog不能用Application的Context.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/知识广度/为什么Dialog不能用Application的Context.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/知识广度/切竖屏时会执行两次onCreate.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/知识广度/切竖屏时会执行两次onCreate.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/知识广度/多线程下载文件.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/知识广度/多线程下载文件.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/知识广度/如何知道AS的依赖库是最新版.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/知识广度/如何知道AS的依赖库是最新版.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/知识广度/官方文档笔记.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/知识广度/官方文档笔记.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/study/知识广度/当Activity上有Dialog时的生命周期.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study/知识广度/编译慢.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study/面试题/金山面试整理/APK安装过程.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study/面试题/金山面试整理/设计模式.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/study/面试题/金山面试整理/面试整理.txt" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

@@ -1,6 +1,0 @@
-Android中，弹出Dialog对话框不会使当前页面的Activity回调onPause
-
-只有在主题对话框的Activity会回调onPause，
-（想想主题对话框的Activity时，原来的Activity焦点都不可获取了，而Dialog弹出时还可以获取焦点的）
-
-而当弹出Dialog时按下home键时，dialog没有生命周期的回调，而Activity则走onPause->onSaveInstanceState->onStop

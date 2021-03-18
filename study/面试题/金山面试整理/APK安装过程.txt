@@ -1,0 +1,2 @@
+1、复制APK安装包到data/app目录下
+2、解压安装包，把dex文件放到dalvik-cache目录下面，并且在data/data根据包名创建对应的目录结构来存放应用数据
